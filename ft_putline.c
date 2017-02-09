@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/09 15:09:29 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/09 19:14:53 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_steps(t_line *line, t_screen *fst, t_point *pointB)
 		return 0;
 	}
 }
-t_point		*new_point(int x, int y, int z, unsigned int color, void *a, void *b)
+t_point		*new_point(int x, int y, int z, unsigned int color)
 {
 	t_point *new;
 	if(!(new = (t_point *)malloc(sizeof(t_point))))
@@ -89,8 +89,8 @@ t_point		*new_point(int x, int y, int z, unsigned int color, void *a, void *b)
 	new->y = y;
 	new->z = z;
 	new->color = color;
-	new->nextx = a;
-	new->nexty = b;
+	new->nextx = NULL;
+	new->nexty = NULL;
 	return new;
 }
 void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)

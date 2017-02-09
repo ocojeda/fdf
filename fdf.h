@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/09 15:09:27 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/09 19:15:16 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ typedef struct	s_point
 }			t_point;
 
 void ft_order_points(t_point *pointA, t_point *pointB);
-t_point     *new_point(int x, int y, int z, unsigned int color, void *a, void *b);
+t_point     *new_point(int x, int y, int z, unsigned int color);
 void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst);
 #endif

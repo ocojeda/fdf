@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/09 18:07:24 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/09 21:48:14 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -36,6 +36,7 @@ int main(int argc, char **argv)
 	t_point *temp2;
 	t_point *fp;
 
+	int flag = 0;
 	int fd;
 	char *line;
 	char **linep;
@@ -45,40 +46,44 @@ int main(int argc, char **argv)
 	int z;
 	int i;
 	
+
 	if(argc == 2)
 	{
 		if((fd = (open(argv[1], O_RDONLY))) == -1)
 			return 0;
 		y = 0;
-		fp = new_point(0, 0, 0, 0, 0, 0);
-		temp = fp; 
 		while(get_next_line(fd, &line))
 		{
 			x = 0;
 			linep = ft_strsplit(line, ' ');
 			while(*linep)
 			{
-				ft_putchar('-');
 				if((color = ft_iscolor(*linep)))
 				{
-			//		ft_putnbr(ft_atoi(color[0]));
 					z = ft_atoi(color[0]);
 					while(*color)
 						free(*color++);
 					linep++;
 				}
 				else
+					z = ft_atoi(*linep++);
+				if(x == 0 && y == 0 && flag == 0)
 				{
-					z = ft_atoi(*linep);
-			//		ft_putnbr(ft_atoi(*linep++));
+					flag = 1;
+					fp = new_point(0, 0 , 0, 0);
+					temp = new_point(0, 0 , 0, 0);
+					fp->nextx = temp;
 				}
-				temp2 = new_point(x, y, z, 0, 0, 0);
-				temp->nextx = temp2;
-				temp = temp2;
+				else
+				{
+					temp2 = new_point(x, y, z, 0);
+					temp->nextx = temp2;
+					temp = temp->nextx;
+					temp2 = NULL;
+				}
 				x++;
 			}
 			y++;
-//			ft_putchar('\n');
 			while(*linep)
 				free(*linep++);
 			if(line != NULL)
@@ -87,25 +92,25 @@ int main(int argc, char **argv)
 		close(fd);
 	}
 	temp = fp;
-	while(fp)
+	while(temp)
 	{
 		ft_putnbr(temp->x);
-		ft_putchar("-");
+		ft_putchar('-');
 		ft_putnbr(temp->y);
-		ft_putchar("-");
+		ft_putchar('-');
 		ft_putnbr(temp->z);
 		ft_putendl("-");
-		temp = fp->nextx;
-		free(fp);
-		fp = temp;
+		temp2 = temp->nextx;
+		free(temp);
+		temp = temp2;
 	}
 	ft_putnbr(x);
 	ft_putnbr(y);
 	ft_putendl("hello!");
 	fst.length = 400;
 	fst.hight = 400;
-	pointB = new_point(150, 300, 0, 0x00ff00ef, NULL, NULL);
-	pointA = new_point(50, 300, 0, 0x00ff00ef, NULL, NULL);
+	pointB = new_point(150, 300, 0, 0x00ff00ef);
+	pointA = new_point(50, 300, 0, 0x00ff00ef);
 	ft_order_points(pointA, pointB);
 	fst.mlx_ptr = mlx_init();
 	fst.img_ptr = mlx_new_image(fst.mlx_ptr, fst.length, fst.hight);
