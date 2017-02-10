@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/09 19:15:16 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/10 19:20:53 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <math.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 typedef struct  s_line
 {
@@ -51,6 +53,11 @@ typedef struct	s_point
 	struct s_point *nexty;
 }			t_point;
 
+char        **ft_iscolor(char *str, int *z);
+int ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3);
+t_point     *ft_set_the_ends(t_point *fp, int a, t_point *temp, t_point *temp2);
+t_point     *ft_get_map(char *str, int x, int y, unsigned int col, char *line);
+void    ft_put_pix_map(t_point *fp, t_screen *fst, t_point *temp, t_point *temp2);
 void ft_order_points(t_point *pointA, t_point *pointB);
 t_point     *new_point(int x, int y, int z, unsigned int color);
 void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst);
