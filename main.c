@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/09 21:48:14 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/10 07:53:55 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -33,10 +33,8 @@ int main(int argc, char **argv)
 	t_point *pointA;
 	t_point *pointB;
 	t_point *temp;
-	t_point *temp2;
 	t_point *fp;
-
-	int flag = 0;
+	t_point *temp2;
 	int fd;
 	char *line;
 	char **linep;
@@ -52,6 +50,8 @@ int main(int argc, char **argv)
 		if((fd = (open(argv[1], O_RDONLY))) == -1)
 			return 0;
 		y = 0;
+		temp = new_point(0, 0 , 0, 0);
+		fp = temp;
 		while(get_next_line(fd, &line))
 		{
 			x = 0;
@@ -63,34 +63,21 @@ int main(int argc, char **argv)
 					z = ft_atoi(color[0]);
 					while(*color)
 						free(*color++);
-					linep++;
 				}
 				else
-					z = ft_atoi(*linep++);
-				if(x == 0 && y == 0 && flag == 0)
-				{
-					flag = 1;
-					fp = new_point(0, 0 , 0, 0);
-					temp = new_point(0, 0 , 0, 0);
-					fp->nextx = temp;
-				}
-				else
-				{
-					temp2 = new_point(x, y, z, 0);
-					temp->nextx = temp2;
-					temp = temp->nextx;
-					temp2 = NULL;
-				}
-				x++;
+					z = ft_atoi(*linep);
+				temp->nextx = new_point(x++, y, z, 0);
+				temp = temp->nextx;
+				free(*linep++);
 			}
 			y++;
-			while(*linep)
-				free(*linep++);
-			if(line != NULL)
-				free(line);
+			free(line);
 		}
 		close(fd);
 	}
+	temp = fp->nextx;
+	free(fp);
+	fp = temp;
 	temp = fp;
 	while(temp)
 	{
