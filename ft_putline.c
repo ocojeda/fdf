@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/10 13:32:49 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/11 20:17:07 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ft_order_points(t_point *pointA, t_point *pointB)
 		pointB->y = pointA->y;
 		pointA->y = temp;
 	}
+
 }
 t_line	*ft_newline(t_point *pointA, t_point *pointB)
 {
@@ -68,6 +69,7 @@ int	ft_steps(t_line *line, t_screen *fst, t_point *pointB)
 				line->y += line->stepy;
 				line->p += line->incne;
 			}
+			if(((line->x + line->y * fst->length) > 0) && ((line->x + line->y * fst->length) < (fst->length * fst->hight)))
 			((unsigned int *)fst->data)[line->x + line->y*fst->length] = pointB->color;
 		}
 		return 1;
@@ -112,6 +114,7 @@ void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)
 				line->x += line->stepx;
 				line->p += line->incne;
 			}
+			if(((line->x + line->y * fst->length) > 0) && ((line->x + line->y * fst->length) < (fst->length * fst->hight)))
 			((unsigned int *)fst->data)[line->x + line->y * fst->length] = pointB->color;
 		}
 	}
