@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/11 20:17:07 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/11 22:01:46 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_steps(t_line *line, t_screen *fst, t_point *pointB)
 		return 0;
 	}
 }
-t_point		*new_point(int x, int y, int z, unsigned int color)
+t_point		*new_point(float x, float y, float z, unsigned int color)
 {
 	t_point *new;
 	if(!(new = (t_point *)malloc(sizeof(t_point))))

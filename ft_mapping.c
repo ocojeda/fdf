@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/11 20:53:31 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/13 17:14:02 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,37 @@ t_point		*ft_get_map(char *str, int x, int y, unsigned int col, char *line)
 	free(fp);
 	return ((ft_set_the_ends(temp, --x, NULL, NULL)));
 }
+t_point		*ft_proyection(t_point *fp)
+{
+	double coss;
+	double sinn;
+	t_point *temp;
+	t_point *temp2;
+	
+	temp = fp;
+	temp2 = fp;
+	coss = (fp->nexty->y - fp->y)/ (fp->nexty->x - fp->x);
+//	coss = (fp->nexty->y - fp->y)/ sqrt(pow((fp->nexty->y - fp->y), 2) + pow((fp->nexty->y - fp->y), 2));
+	sinn = (fp->nexty->x - fp->x)/ sqrt(pow((fp->nexty->y - fp->y), 2) + pow((fp->    nexty->y - fp->y), 2));
+
+	while(temp)
+	{
+		temp2 = temp;
+		while(temp2)
+		{
+//			fp->x = fp->x*cos(45) + fp->x*sin(45);
+			fp->y = fp->y*cos(45) - fp->y*cos(45);
+			temp2 = temp2->nextx;
+		}
+		temp= temp->nexty;
+	}
+	test(fp, print_point);
+	return (fp);
+}
 void	ft_zoom(t_point *fp)
 {
-	fp->x *= 1.5;
-	fp->y *= 1.5;
+	fp->x *= 2;
+	fp->y *= 2;
 }
 void	ft_movedown(t_point *fp)
 {
@@ -167,52 +194,70 @@ int		ft_objlength(t_point *fp)
 	}
 	return (i);
 }
-void	ft_center(t_point *fp, int length, int hight)
+t_point		*find_centerobj(t_point *fp)
 {
 	t_point *temp;
-	int i;
+	float x;
+	float y;
+	int dec;
 
-	if(fp->x < length/2)
+	dec = fp->nextx->x - fp->x;
+	x = fp->x;
+	y = fp->y;
+	temp = fp;
+
+	while(temp)
 	{
-		i = fp->x + length/2;
+		temp=temp->nextx;
+		x+=dec;
+	}
+	temp = fp;
+	while(temp)
+	{
+		temp=temp->nexty;
+		y+=dec;
+	}
+	temp = fp;
+	x = x/2 + fp->x/2;
+	y = y/2 + fp->y/2;
+	return new_point(x, y, 0, 0);
+}
+
+void	ft_center(t_point *fp, int length, int hight)
+{
+	int i;
+	t_point *center;
+	center = find_centerobj(fp);	
+	if(center->x < length /2)
+	{
+		i = length / 2 - center->x;
 		while(i--)
 			test(fp, ft_mover);
 	}
-	if(fp->x > length/2) 
+	if(center->x > length/2) 
 	{
-		i = fp->x - length/2;
+		i = center->x - length/2;
 		while(i++ != 0)
 			test(fp, ft_movel);
 	}
-	if(fp->y < hight/2) 
+	if(center->y < hight/2) 
 	{
-		i = fp->y + hight/2;
+		i = hight/2 - center->y;
 		while(i--)
 			test(fp, ft_movedown);
 	}
- 	if(fp->y > hight/2) 
+	if(center->y > hight/2) 
 	{
-		i = fp->x - hight/2;
+		i = fp->y - hight/2;
 		while(i++ != 0)
 			test(fp, ft_moveup);
 	}
+	free(center);
 }
 
 void	ft_put_pix_map(t_point *fp, t_screen *fst, t_point *temp, t_point *temp2)
 {
 	temp = fp;
-	int w;
-	w= 2;
-	while(w--)
-	test(fp, ft_zoom);
-	w = 10;
-	while(w--)
-	test(fp, ft_mover);
-	w = 60;
-	while(w--)
-	test(fp, ft_movedown);
-
-/*	test(fp, print_point);*/
 	while(temp)
 	{
 		temp2 = temp;
