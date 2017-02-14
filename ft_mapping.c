@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/13 17:14:02 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/14 08:49:58 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,29 +105,26 @@ t_point		*ft_get_map(char *str, int x, int y, unsigned int col, char *line)
 }
 t_point		*ft_proyection(t_point *fp)
 {
-	double coss;
-	double sinn;
+	int x;
 	t_point *temp;
 	t_point *temp2;
 	
-	temp = fp;
-	temp2 = fp;
-	coss = (fp->nexty->y - fp->y)/ (fp->nexty->x - fp->x);
-//	coss = (fp->nexty->y - fp->y)/ sqrt(pow((fp->nexty->y - fp->y), 2) + pow((fp->nexty->y - fp->y), 2));
-	sinn = (fp->nexty->x - fp->x)/ sqrt(pow((fp->nexty->y - fp->y), 2) + pow((fp->    nexty->y - fp->y), 2));
-
+	temp = fp;	
 	while(temp)
 	{
 		temp2 = temp;
 		while(temp2)
 		{
-//			fp->x = fp->x*cos(45) + fp->x*sin(45);
-			fp->y = fp->y*cos(45) - fp->y*cos(45);
+			x = temp2->x;
+			temp2->x = temp2->x*cos(0.75) - temp2->y*sin(0.5);
+			temp2->y = x*sin(0.5) + temp2->y*cos(0.75);
+			temp2->x = temp2->z + (0.75 * temp2->x);
+			temp2->y = temp2->y + (0.75/2 * temp2->z);
 			temp2 = temp2->nextx;
 		}
 		temp= temp->nexty;
 	}
-	test(fp, print_point);
+//	test(fp, print_point);
 	return (fp);
 }
 void	ft_zoom(t_point *fp)
@@ -201,25 +198,16 @@ t_point		*find_centerobj(t_point *fp)
 	float y;
 	int dec;
 
-	dec = fp->nextx->x - fp->x;
 	x = fp->x;
 	y = fp->y;
 	temp = fp;
-
-	while(temp)
-	{
+	while(temp->nextx)
 		temp=temp->nextx;
-		x+=dec;
-	}
+	x = (temp->x - x)/2 + x;
 	temp = fp;
-	while(temp)
-	{
+	while(temp->nexty)
 		temp=temp->nexty;
-		y+=dec;
-	}
-	temp = fp;
-	x = x/2 + fp->x/2;
-	y = y/2 + fp->y/2;
+	y = (temp->y -y)/2 + y;
 	return new_point(x, y, 0, 0);
 }
 
@@ -237,7 +225,7 @@ void	ft_center(t_point *fp, int length, int hight)
 	if(center->x > length/2) 
 	{
 		i = center->x - length/2;
-		while(i++ != 0)
+		while(i--)
 			test(fp, ft_movel);
 	}
 	if(center->y < hight/2) 
@@ -246,10 +234,10 @@ void	ft_center(t_point *fp, int length, int hight)
 		while(i--)
 			test(fp, ft_movedown);
 	}
-	if(center->y > hight/2) 
+	if(center->y > length/2) 
 	{
-		i = fp->y - hight/2;
-		while(i++ != 0)
+		i = center->y - length/2;
+		while(i--)
 			test(fp, ft_moveup);
 	}
 	free(center);

@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/11 22:01:46 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/14 09:36:46 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 void ft_order_points(t_point *pointA, t_point *pointB)
 {
+/*	t_point *temp;
 	int temp;
-	if(pointB->y < pointA->y || (pointA->x > pointB->x && pointA->y == pointB->y))
+if(pointB->y < pointA->y || (pointA->x > pointB->x && pointA->y == pointB->y))
 	{
+		temp = pointB;
+		pointB= pointA;
+		pointA = temp;
 		temp = pointB->x;
 		pointB->x = pointA->x;
 		pointA->x = temp;
 		temp = pointB->y;
 		pointB->y = pointA->y;
 		pointA->y = temp;
-	}
-
+	}*/
 }
+
 t_line	*ft_newline(t_point *pointA, t_point *pointB)
 {
 	t_line *new;
@@ -100,10 +104,15 @@ void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)
 	t_line *line;
 	if(pointA && pointB)
 	{
-	ft_order_points(pointA, pointB);
+	//ft_order_points(pointA, pointB);
+	//if(pointA->x > pointB->x && pointB->y > pointA->y)
+	//line = ft_newline(pointB, pointA);
+	//else
 	line = ft_newline(pointA, pointB);
 	if(!ft_steps(line, fst, pointB))
 	{
+		if(line->y >= pointB->y)
+		printf("je dois imprimer de line->y %d a pointB->y %f", line->y, pointB->y);
 		while(line->y < pointB->y)
 		{
 			line->y += line->stepy;
