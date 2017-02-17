@@ -6,39 +6,23 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/14 09:36:46 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/17 14:47:50 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void ft_order_points(t_point *pointA, t_point *pointB)
-{
-/*	t_point *temp;
-	int temp;
-if(pointB->y < pointA->y || (pointA->x > pointB->x && pointA->y == pointB->y))
-	{
-		temp = pointB;
-		pointB= pointA;
-		pointA = temp;
-		temp = pointB->x;
-		pointB->x = pointA->x;
-		pointA->x = temp;
-		temp = pointB->y;
-		pointB->y = pointA->y;
-		pointA->y = temp;
-	}*/
-}
 
 t_line	*ft_newline(t_point *pointA, t_point *pointB)
 {
 	t_line *new;
 	if(!(new = (t_line *)malloc(sizeof(t_line))))
 		return NULL;
-	new->x = pointA->x;
-	new->y = pointA->y;
-	new->dx = pointB->x - pointA->x;
-	new->dy = pointB->y - pointA->y;
+	new->x0 = pointA->x;
+	new->y0 = pointA->y;
+	new->x1 = pointB->x;
+	new->y1 = pointB->y;
+	new->dx = new->x1 - new->x0;
+	new->dy = new->y1 - new->y0;
 	if(new->dy < 0)
 	{
 		new->dy = (new->dy) * -1;
@@ -53,17 +37,19 @@ t_line	*ft_newline(t_point *pointA, t_point *pointB)
 	}
 	else
 		new->stepx = 1;
+	new->x = new->x0;
+	new->y = new->y0;
 	return new;
 }
 
-int	ft_steps(t_line *line, t_screen *fst, t_point *pointB)
+int	ft_steps(t_line *line, t_screen *fst, unsigned int color)
 {
 	if(line->dx > line->dy)
 	{
 		line->p = (2 * line->dy) - line->dx;
 		line->ince = 2 * line->dy;
 		line->incne = 2 * (line->dy - line->dx);
-		while(line->x < pointB->x)
+		while(line->x != line->x1)
 		{
 			line->x += line->stepx;
 			if(line->p < 0)
@@ -74,7 +60,7 @@ int	ft_steps(t_line *line, t_screen *fst, t_point *pointB)
 				line->p += line->incne;
 			}
 			if(((line->x + line->y * fst->length) > 0) && ((line->x + line->y * fst->length) < (fst->length * fst->hight)))
-			((unsigned int *)fst->data)[line->x + line->y*fst->length] = pointB->color;
+			((unsigned int *)fst->data)[line->x + line->y*fst->length] = color;
 		}
 		return 1;
 	}
@@ -102,18 +88,13 @@ t_point		*new_point(float x, float y, float z, unsigned int color)
 void ft_put_pix_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)
 {
 	t_line *line;
+	
 	if(pointA && pointB)
 	{
-	//ft_order_points(pointA, pointB);
-	//if(pointA->x > pointB->x && pointB->y > pointA->y)
-	//line = ft_newline(pointB, pointA);
-	//else
-	line = ft_newline(pointA, pointB);
-	if(!ft_steps(line, fst, pointB))
+	line = ft_newline(pointB, pointA);
+	if(!ft_steps(line, fst, pointB->color))
 	{
-		if(line->y >= pointB->y)
-		printf("je dois imprimer de line->y %d a pointB->y %f", line->y, pointB->y);
-		while(line->y < pointB->y)
+		while(line->y != line->y1)
 		{
 			line->y += line->stepy;
 			if(line->p < 0)

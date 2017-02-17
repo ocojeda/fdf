@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/14 08:49:58 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/17 14:57:50 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ t_point		*ft_proyection(t_point *fp)
 			x = temp2->x;
 			temp2->x = temp2->x*cos(0.75) - temp2->y*sin(0.5);
 			temp2->y = x*sin(0.5) + temp2->y*cos(0.75);
-			temp2->x = temp2->z + (0.75 * temp2->x);
-			temp2->y = temp2->y + (0.75/2 * temp2->z);
-			temp2 = temp2->nextx;
+			temp2->x = temp2->z + (0.5 * temp2->x);
+			temp2->y = temp2->y + (0.5/2 * temp2->z);
+		temp2 = temp2->nextx;
 		}
 		temp= temp->nexty;
 	}
