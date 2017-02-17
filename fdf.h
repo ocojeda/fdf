@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 17:08:24 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/17 18:23:41 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-
+# define COLOR 0x00FFFFFF
+# define ZOOM 1
 typedef struct		s_line
 {
  	int				x;
@@ -69,7 +70,7 @@ void 		print_point(t_point *point);
 
 /************* PARSE.C **************/
 
-t_point		*ft_get_map(char *str, int x, int y, unsigned int col, char *line);
+t_point		*ft_get_map(char *str);
 int			ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3);
 
 /*********** PROYECTION.C ***********/

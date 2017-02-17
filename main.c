@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 17:06:05 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/17 18:23:40 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				main(int argc, char **argv)
 	t_point		*fp;
 	t_point		*center;
 
-	fp = ft_get_map(argv[1], 0, 0, 0x00ffffff, NULL);
+	fp = ft_get_map(argv[1]);
 	fst.length = 1500;
 	fst.hight = 1200;
 	fst.mlx = mlx_init();
@@ -85,7 +85,7 @@ int				main(int argc, char **argv)
 //	ft_put_pix_diagonal(pointA, pointB, &fst);
 	
 	int w;
-	w= 5;
+	w= ZOOM;
 	while(w--)
 	test(fp, ft_zoom);
 //	w = 900;

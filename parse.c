@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/17 17:05:57 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/17 18:18:40 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		**ft_iscolor(char *str, int *z)
 {
-	if	(ft_strchr(str, ','))
+	if (ft_strchr(str, ','))
 	{
 		*z = ft_atoi(&str[0]);
 		return (ft_strsplit(str, ','));
@@ -22,7 +22,7 @@ static char		**ft_iscolor(char *str, int *z)
 	return (0);
 }
 
-int			ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3)
+int				ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3)
 {
 	if (temp)
 	{
@@ -70,41 +70,44 @@ static t_point	*ft_set_the_end(t_point *fp, int a, t_point *t, t_point *t2)
 	return (fp);
 }
 
-t_point		*ft_get_map(char *str, int x, int y, unsigned int col, char *line)
+static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 {
 	char		**color;
-	int			fd;
 	char		**linep;
-	t_point		*temp;
-	t_point		*fp;
+	char		*line;
+	int			x;
 	int			z;
 
-	if ((fd = (open(str, O_RDONLY))) == -1)
-		return (0);
-	temp = new_point(0, 0 , 0, col);
-	fp = temp;
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) && ++y >= -1)
 	{
 		x = 0;
 		linep = ft_strsplit(line, ' ');
 		while (*linep)
 		{
 			if ((color = ft_iscolor(*linep, &z)))
-			{
 				while (*color)
 					free(*color++);
-			}
 			else
 				z = ft_atoi(*linep);
-			temp->nextx = new_point(x++, y, z, col);
+			temp->nextx = new_point(x++, y, z, COLOR);
 			temp = temp->nextx;
 			free(*linep++);
 		}
-		y++;
 		free(line);
 	}
+	return ((ft_set_the_end(fp->nextx, --x, NULL, NULL)));
+}
+
+t_point			*ft_get_map(char *str)
+{
+	int		fd;
+	t_point	*fp;
+	t_point	*temp;
+
+	if ((fd = (open(str, O_RDONLY))) == -1)
+		return (0);
+	temp = new_point(0, 0, 0, COLOR);
+	fp = get_map(fd, temp, -1, temp);
 	close(fd);
-	temp = fp->nextx;
-	free(fp);
-	return ((ft_set_the_end(temp, --x, NULL, NULL)));
+	return (fp);
 }
