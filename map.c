@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/18 15:52:54 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/18 17:02:07 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,47 @@
 t_point		*ft_find_centermap(t_point *fp)
 {
 	t_point		*temp;
+	t_point		*temp2;
 	float		x;
+	float		x1;
 	float		y;
-	//int			dec;
+	float		y1;
 
 	x = fp->x;
-	y = fp->y;
+	x1 = fp->x;
+	y1 = fp->y;
+	y1 = fp->y;
 	temp = fp;
-	while (temp->nextx)
-		temp = temp->nextx;
-	x = (temp->x - x) / 2 + x;
-	temp = fp;
-	while (temp->nexty)
+	while (temp)
+	{
+		temp2 = temp;
+		while(temp2)
+		{
+			if(temp2->x < x)
+				x = temp2->x;
+			if(temp2->x > x1)
+				x1 = temp2->x;
+			if(temp2->y < y)
+				y = temp2->y;
+			if(temp2->y > y1)
+				y1 = temp2->y;
+		temp2 = temp2->nextx;
+		}
 		temp = temp->nexty;
-	y = (temp->y - y) / 2 + y;
+	}
+	x = (x1 - x) / 2 + x;
+	y = (y1 - y) / 2 + y;
 	return (new_point(x, y, 0, 0));
 }
 
-void		ft_center_norme(int i, int length, t_point *fp, t_point *center)
+void		ft_center_norme(int i, int higth, t_point *fp, t_point *center)
 {
-	i = center->y - length / 2;
+	i = center->y - higth / 2;
 	while (i--)
 		test(fp, ft_moveup);
 }
 
-void		ft_center(t_point *fp, int length, int hight, int i)
+void		ft_center(t_point *fp, int length, int higth, int i)
 {
 	t_point		*center;
 
@@ -101,13 +117,13 @@ void		ft_center(t_point *fp, int length, int hight, int i)
 		while (i--)
 			test(fp, ft_movel);
 	}
-	if (center->y < hight / 2)
+	if (center->y < higth / 2)
 	{
-		i = hight / 2 - center->y;
+		i = higth / 2 - center->y;
 		while (i--)
 			test(fp, ft_movedown);
 	}
-	if (center->y > length / 2)
-		ft_center_norme(i, length, fp, center);
+	if (center->y > higth / 2)
+		ft_center_norme(i, higth, fp, center);
 	free(center);
 }
