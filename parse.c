@@ -6,17 +6,16 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/18 14:20:01 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 15:23:48 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static char		**ft_iscolor(char *str, int *z)
+static char		**ft_iscolor(char *str)
 {
 	if (ft_strchr(str, ','))
 	{
-		*z = ft_atoi(&str[0]);
 		return (ft_strsplit(str, ','));
 	}
 	return (0);
@@ -84,12 +83,18 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 		linep = ft_strsplit(line, ' ');
 		while (*linep)
 		{
-			if ((color = ft_iscolor(*linep, &z)))
+			if ((color = ft_iscolor(*linep)))
+			{
+				temp->nextx = new_point(x++, y, ft_atoi(color[0]), \
+						ft_atoi_hexa(color[1]));
 				while (*color)
-					free(*color++);
-			else
+				free(*color++);
+			}
+				else
+			{
 				z = ft_atoi(*linep);
-			temp->nextx = new_point(x++, y, z, COLOR);
+				temp->nextx = new_point(x++, y, z, COLOR);
+			}
 			temp = temp->nextx;
 			free(*linep++);
 		}
