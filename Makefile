@@ -6,20 +6,32 @@
 #    By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/17 18:15:56 by ocojeda-          #+#    #+#              #
-#    Updated: 2017/01/17 18:30:31 by ocojeda-         ###   ########.fr        #
+#    Updated: 2017/02/18 14:59:43 by tfaure           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-FLAGS = -WALL -Wextra -Werror
-SRCS =
-LIBRARIES = libft/libft.a 
-OBJECTS = 
+FLAGS = -Wall -Wextra  
+MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+SRCS = bonus.c ft_atoi_hexa.c proyection.c map.c line.c parse.c
+LIBRARIES = libft/libft.a fdf.a
+OBJECTS = $(SRCS:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME):
+	@make -C ./libft
+	@gcc -c $(FLAGS) $(SRCS)
+	@ar rc fdf.a $(OBJECTS)
+	@ranlib fdf.a
+	@gcc $(FLAGS) main.c $(LIBRARIES) -o $(NAME) $(MLXFLAGS)
 
 clean:
-fclean:
-re:	fclean all
+	@rm -f $(OBJECTS) fdf.a main.o
+	@make clean -C ./libft
+
+fclean:	clean
+	@rm -f $(NAME)
+	@make fclean -C ./libft
+
+re: fclean all
