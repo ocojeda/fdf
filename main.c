@@ -6,13 +6,13 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 15:28:38 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/18 15:51:37 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int		my_key_func(int keycode, void *param)
+static int		my_key_func(int keycode)
 {
 	if (keycode == 53)
 		exit(0);
