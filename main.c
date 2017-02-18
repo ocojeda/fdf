@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 14:33:05 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 15:28:38 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int				main(int argc, char **argv)
 	t_point		*fp;
 	t_point		*center;
 
+	if(argc == 2)
+	{
 	fp = ft_get_map(argv[1]);
 	fst.len = 1500;
 	fst.hight = 1200;
@@ -103,5 +105,6 @@ int				main(int argc, char **argv)
 	mlx_key_hook(fst.win, my_key_func, 0);
 	mlx_loop(fst.mlx);
 	ft_erase_map(fp, NULL, NULL);
+	}
 	return (0);
 }
