@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 14:48:07 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/18 19:23:47 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,21 @@
 # include <math.h>
 # define COLOR 0x00FFFFFF
 # define ZOOM 5
+# define R_TRANSLATE 100
 
+# define RADIANCONV 0.017453259
+# define ANGLE 5
+
+
+typedef struct		s_point
+{
+	float			x;
+	float			y;
+	float			z;
+	unsigned int	color;
+	struct s_point	*nextx;
+	struct s_point	*nexty;
+}					t_point;
 typedef struct		s_line
 {
 	int				x;
@@ -50,17 +64,8 @@ typedef struct		s_screen
 	int				hight;
 	int				endian;
 	char			*data;
+	t_point			*fp;
 }					t_screen;
-
-typedef struct		s_point
-{
-	float			x;
-	float			y;
-	float			z;
-	unsigned int	color;
-	struct s_point	*nextx;
-	struct s_point	*nexty;
-}					t_point;
 
 /************* MAIN.C ***************/
 
@@ -101,4 +106,10 @@ void		ft_movel(t_point *fp);
 /************ FT_ATOI_HEXA.C ********/
 unsigned int	ft_atoi_hexa(char *nbr);
 
+/************ matrix.c **************/
+
+void	matrice_rotate_x(t_point *temp);
+void	matrice_rotate_y(t_point *temp);
+void	matrice_rotate_z(t_point *temp);
+void	matrice_translate(t_point *temp, int x);
 #endif

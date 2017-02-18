@@ -6,16 +6,38 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 17:05:59 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/18 19:41:31 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int		my_key_func(int keycode)
+static int		my_key_func(int keycode, t_screen *fst)
 {
 	if (keycode == 53)
 		exit(0);
+	if (keycode == 126)
+	{
+		test(fst->fp, matrice_rotate_x);
+	}
+	if (keycode == 125)
+	{
+		test(fst->fp, matrice_rotate_y);
+
+	}
+	if (keycode == 124)
+	{
+	
+	}
+	if (keycode == 123)
+	{
+	
+	}
+	mlx_destroy_image(fst->mlx, fst->img);
+	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
+	ft_put_pix_map(fst->fp, fst, NULL, NULL);
+	ft_center(fst->fp, fst->len, fst->hight, 0);
+	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
 
@@ -87,7 +109,7 @@ int				main(int argc, char **argv)
 //	ft_put_pix_diagonal(pointA, pointB, &fst);
 	
 	int w;
-	w= 1;
+	w= ZOOM;
 	while(w--)
 	test(fp, ft_zoom);
 //	w = 900;
@@ -102,7 +124,8 @@ int				main(int argc, char **argv)
 	ft_put_pix_map(fp, &fst, NULL, NULL);	
 	fst.win = mlx_new_window(fst.mlx, fst.len, fst.hight, argv[1]);
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
-	mlx_key_hook(fst.win, my_key_func, 0);
+	fst.fp = fp;
+	mlx_key_hook(fst.win, my_key_func, &fst);
 	mlx_loop(fst.mlx);
 	ft_erase_map(fp, NULL, NULL);
 	}
