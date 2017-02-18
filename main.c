@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 15:51:37 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/18 17:05:59 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int				main(int argc, char **argv)
 //	ft_put_pix_diagonal(pointA, pointB, &fst);
 	
 	int w;
-	w= ZOOM;
+	w= 1;
 	while(w--)
 	test(fp, ft_zoom);
 //	w = 900;
