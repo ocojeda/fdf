@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/18 14:34:43 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 15:52:54 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_point		*ft_find_centermap(t_point *fp)
 	t_point		*temp;
 	float		x;
 	float		y;
-	int			dec;
+	//int			dec;
 
 	x = fp->x;
 	y = fp->y;
