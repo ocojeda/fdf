@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 14:40:54 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 14:48:07 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,8 @@ void		ft_movedown(t_point *fp);
 void		ft_moveup(t_point *fp);
 void		ft_mover(t_point *fp);
 void		ft_movel(t_point *fp);
+
+/************ FT_ATOI_HEXA.C ********/
+unsigned int	ft_atoi_hexa(char *nbr);
 
 #endif

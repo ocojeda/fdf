@@ -1,66 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoibase.c                                      :+:      :+:    :+:   */
+/*   ft_atoi_hexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/17 16:04:31 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 18:41:10 by ocojeda-         ###   ########.fr       */
+/*   Created: 2017/02/18 14:32:26 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/02/18 14:46:01 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "fdf.h"
 
-int	ft_iscapital(char c)
+unsigned int	ft_ischar(char c, int power, unsigned int i)
 {
-	if(c >= 65 && c <= 90)
-		return (1);
-	else 
-		return (0);
+	if (ft_isalpha(c))
+			{
+				if((c >= 65) && (c <= 90))
+					i = i + ((c - 'A' + 10) * pow(16, power));
+				else 
+					i = i  + ((c - 'a' + 10) * pow(16, power));
+			}
+			else
+				i = i + (c -'0') * pow(16, power);
+	return i;
 }
-unsigned int	ft_getcolor(char *nbr)
+
+unsigned int	ft_atoi_hexa(char *nbr)
 {
 	unsigned int i;
 	char *str;
 	char str2[3];
-	int pow;
+	int power;
 	int e;
 
 	i = 0;
 	if(!nbr)
 		return 0;
-	str = ft_strchr(nbr,'x')+1;
+	str = ft_strchr(nbr,'x') + 1;
+	power = ft_strlen(str) - 1;
 	while(*str)
 	{
 		ft_strncpy(str2, str, 2);
 		e = 0;
-		ft_putendl(str2);
-		pow = 16;
 		while(str2[e])
 		{
-			if (ft_isalpha(str2[e]))
-			{
-				if(ft_iscapital(str2[e]))
-					i = i + (str2[e] - 'A' + 10)*pow;
-				else 
-					i = i + (str2[e] - 'a' + 10)*pow;
-			}
-			else
-				i = i + (str2[e]-'0')*pow;
+			i = ft_ischar(str2[e], power--, i);
 			e++;
-			pow = 1;
 		}
-		str+=2;
-//	ft_putnbr(i);
-	ft_putnbr(i);
+		str += 2;
 	}
-	return 1;
-}
-int main()
-{
-	char *str = "0xff0000";
-	ft_getcolor(str);
-	return 0;
-
+	return i;
 }
