@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 18:23:40 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 14:33:05 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int				main(int argc, char **argv)
 	t_point		*center;
 
 	fp = ft_get_map(argv[1]);
-	fst.length = 1500;
+	fst.len = 1500;
 	fst.hight = 1200;
 	fst.mlx = mlx_init();
-	fst.img = mlx_new_image(fst.mlx, fst.length, fst.hight);
+	fst.img = mlx_new_image(fst.mlx, fst.len, fst.hight);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);	
 //	ft_put_pix_diagonal(pointA, pointB, &fst);
 	
@@ -92,13 +92,13 @@ int				main(int argc, char **argv)
 //	while(w--)
 //	test(fp, ft_mover);
 
-//	ft_center(fp, fst.length, fst.hight);
+//	ft_center(fp, fst.len, fst.hight);
 	test(fp, print_point);
 	ft_proyection(fp);
-	ft_center(fp, fst.length, fst.hight);
+	ft_center(fp, fst.len, fst.hight, 0);
 //	test(fp, print_point);
 	ft_put_pix_map(fp, &fst, NULL, NULL);	
-	fst.win = mlx_new_window(fst.mlx, fst.length, fst.hight, argv[1]);
+	fst.win = mlx_new_window(fst.mlx, fst.len, fst.hight, argv[1]);
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_key_hook(fst.win, my_key_func, 0);
 	mlx_loop(fst.mlx);

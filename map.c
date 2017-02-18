@@ -6,60 +6,60 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/17 16:27:55 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:34:43 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fdf.h"
+#include "fdf.h"
 
 /*int			ft_maplong(t_point *fp)
-{
-	t_point		*temp;
-	int			i;
+  {
+  t_point		*temp;
+  int			i;
 
-	i = 0;
-	temp = fp;
-	while (temp)
-	{
-		i++;
-		temp = temp->nextx;
-	}
-	return (i);
-}*/
+  i = 0;
+  temp = fp;
+  while (temp)
+  {
+  i++;
+  temp = temp->nextx;
+  }
+  return (i);
+  }*/
 
 /*int			ft_maphigh(t_point *fp)
-{
-	t_point		*temp;
-	int			i;
+  {
+  t_point		*temp;
+  int			i;
 
-	i = 0;
-	temp = fp;
-	while (temp)
-	{
-		i++;
-		temp = temp->nexty;
-	}
-	return (i);
-}*/
+  i = 0;
+  temp = fp;
+  while (temp)
+  {
+  i++;
+  temp = temp->nexty;
+  }
+  return (i);
+  }*/
 
 /*int			ft_maplength(t_point *fp)
-{
-	t_point		*temp;
-	int			i;
+  {
+  t_point		*temp;
+  int			i;
 
-	i = 0;
-	temp = fp;
-	while (temp)
-	{
-		i++;
-		temp = temp->nextx;
-	}
-	return (i);
-}*/
+  i = 0;
+  temp = fp;
+  while (temp)
+  {
+  i++;
+  temp = temp->nextx;
+  }
+  return (i);
+  }*/
 
 t_point		*ft_find_centermap(t_point *fp)
 {
-	t_point 	*temp;
+	t_point		*temp;
 	float		x;
 	float		y;
 	int			dec;
@@ -72,14 +72,20 @@ t_point		*ft_find_centermap(t_point *fp)
 	x = (temp->x - x) / 2 + x;
 	temp = fp;
 	while (temp->nexty)
-		temp=temp->nexty;
-	y = (temp->y -y) / 2 + y;
+		temp = temp->nexty;
+	y = (temp->y - y) / 2 + y;
 	return (new_point(x, y, 0, 0));
 }
 
-void		ft_center(t_point *fp, int length, int hight)
+void		ft_center_norme(int i, int length, t_point *fp, t_point *center)
 {
-	int			i;
+	i = center->y - length / 2;
+	while (i--)
+		test(fp, ft_moveup);
+}
+
+void		ft_center(t_point *fp, int length, int hight, int i)
+{
 	t_point		*center;
 
 	center = ft_find_centermap(fp);
@@ -102,10 +108,6 @@ void		ft_center(t_point *fp, int length, int hight)
 			test(fp, ft_movedown);
 	}
 	if (center->y > length / 2)
-	{
-		i = center->y - length / 2;
-		while (i--)
-			test(fp, ft_moveup);
-	}
+		ft_center_norme(i, length, fp, center);
 	free(center);
 }

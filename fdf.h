@@ -6,13 +6,12 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 18:23:41 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/18 14:40:54 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FDF_H
+#ifndef FDF_H
 # define FDF_H
-
 # include <mlx.h>
 # include "libft/libft.h"
 # include <stdlib.h>
@@ -21,52 +20,52 @@
 # include <stdio.h>
 # include <math.h>
 # define COLOR 0x00FFFFFF
-# define ZOOM 1
+# define ZOOM 5
+
 typedef struct		s_line
 {
- 	int				x;
- 	int				y;
+	int				x;
+	int				y;
 	int				x0;
 	int				y0;
 	int				x1;
 	int				y1;
- 	int				dx;
- 	int				dy;
-   	int				p;
- 	int				ince;
+	int				dx;
+	int				dy;
+	int				p;
+	int				ince;
 	int				incne;
- 	int				stepx;
- 	int				stepy;
+	int				stepx;
+	int				stepy;
 }					t_line;
 
 typedef struct		s_screen
 {
-	void 			*mlx;
-	void 			*win;
-	void 			*img;
+	void			*mlx;
+	void			*win;
+	void			*img;
 	int				bpp;
 	int				sizeline;
-	int				length;
-	int 			hight;
-	int			 	endian;
-	char 			*data;
+	int				len;
+	int				hight;
+	int				endian;
+	char			*data;
 }					t_screen;
 
 typedef struct		s_point
 {
 	float			x;
-	float 			y;
-	float 			z;
+	float			y;
+	float			z;
 	unsigned int	color;
-	struct s_point *nextx;
-	struct s_point *nexty;
+	struct s_point	*nextx;
+	struct s_point	*nexty;
 }					t_point;
-
 
 /************* MAIN.C ***************/
 
 t_point		*test(t_point *fp, void (*f)(t_point *point));
-void 		print_point(t_point *point);
+void		print_point(t_point *point);
 
 /************* PARSE.C **************/
 
@@ -80,12 +79,12 @@ void		ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2);
 
 /************* LINE.C ***************/
 
-void		ft_put_diagonal(t_point *pointA, t_point *pointB, t_screen *fst);
+void		ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst);
 t_point		*new_point(float x, float y, float z, unsigned int color);
 
 /*************  MAP.C  **************/
 
-void		ft_center(t_point *fp, int lenght, int hight);
+void		ft_center(t_point *fp, int lenght, int hight, int i);
 t_point		*ft_find_centermap(t_point *fp);
 //int		ft_maplong(t_point *fp);
 //int		ft_maphight(t_point *fp);

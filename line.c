@@ -6,22 +6,20 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 17:06:13 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:25:03 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_line	*ft_newline(t_point *pointA, t_point *pointB)
+static t_line	*ft_newline(t_point *pointa, t_point *pointb, t_line *new)
 {
-	t_line		*new;
-
 	if (!(new = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
-	new->x0 = pointA->x;
-	new->y0 = pointA->y;
-	new->x1 = pointB->x;
-	new->y1 = pointB->y;
+	new->x0 = pointa->x;
+	new->y0 = pointa->y;
+	new->x1 = pointb->x;
+	new->y1 = pointb->y;
 	new->dx = new->x1 - new->x0;
 	new->dy = new->y1 - new->y0;
 	if (new->dy < 0)
@@ -43,7 +41,15 @@ static t_line	*ft_newline(t_point *pointA, t_point *pointB)
 	return (new);
 }
 
-static int		ft_steps(t_line *line, t_screen *fst, unsigned int color)
+static int		ft_steps_else(t_line *line)
+{
+	line->p = (2 * line->dx) - line->dy;
+	line->ince = 2 * line->dx;
+	line->incne = 2 * (line->dx - line->dy);
+	return (0);
+}
+
+static int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
 {
 	if (line->dx > line->dy)
 	{
@@ -60,21 +66,17 @@ static int		ft_steps(t_line *line, t_screen *fst, unsigned int color)
 				line->y += line->stepy;
 				line->p += line->incne;
 			}
-			if (((line->x + line->y * fst->length) > 0) && ((line->x + line->y * fst->length) < (fst->length * fst->hight)))
-				((unsigned int *)fst->data)[line->x + line->y*fst->length] = color;
+			if (((line->x + line->y * fst->len) > 0) && ((line->x + line->y\
+					* fst->len) < (fst->len * fst->hight)))
+				((unsigned int *)fst->data)[line->x + line->y * fst->len] = col;
 		}
 		return (1);
 	}
 	else
-	{
-		line->p = (2 * line->dx) - line->dy;
-		line->ince = 2 * line->dx;
-		line->incne = 2 * (line->dx - line->dy);
-		return (0);
-	}
+		return (ft_steps_else(line));
 }
 
-t_point		*new_point(float x, float y, float z, unsigned int color)
+t_point			*new_point(float x, float y, float z, unsigned int color)
 {
 	t_point		*new;
 
@@ -88,14 +90,15 @@ t_point		*new_point(float x, float y, float z, unsigned int color)
 	new->nexty = NULL;
 	return (new);
 }
-void		ft_put_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)
+
+void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 {
 	t_line		*line;
-	
-	if (pointA && pointB)
+
+	if (pointa && pointb)
 	{
- 		line = ft_newline(pointB, pointA);
-		if (!ft_steps(line, fst, pointB->color))
+		line = ft_newline(pointb, pointa, NULL);
+		if (!ft_steps(line, fst, pointb->color))
 		{
 			while (line->y != line->y1)
 			{
@@ -107,8 +110,10 @@ void		ft_put_diagonal(t_point *pointA, t_point *pointB, t_screen *fst)
 					line->x += line->stepx;
 					line->p += line->incne;
 				}
-				if (((line->x + line->y * fst->length) > 0) && ((line->x + line->y * fst->length) < (fst->length * fst->hight)))
-					((unsigned int *)fst->data)[line->x + line->y * fst->length] = pointB->color;
+				if (((line->x + line->y * fst->len) > 0) && ((line->x + \
+							line->y * fst->len) < (fst->len * fst->hight)))
+					((unsigned int *)fst->data)[line->x + line->y * \
+						fst->len] = pointb->color;
 			}
 		}
 		free(line);

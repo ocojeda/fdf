@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/17 17:06:08 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:39:35 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_point		*ft_proyection(t_point *fp)
 	int			x;
 	t_point		*temp;
 	t_point		*temp2;
-	
-	temp = fp;	
+
+	temp = fp;
 	while (temp)
 	{
 		temp2 = temp;
@@ -33,7 +33,6 @@ t_point		*ft_proyection(t_point *fp)
 		}
 		temp = temp->nexty;
 	}
-//	test(fp, print_point);
 	return (fp);
 }
 
