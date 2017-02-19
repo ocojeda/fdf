@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/18 17:02:07 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/19 15:03:48 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,15 @@ void		ft_center_norme(int i, int higth, t_point *fp, t_point *center)
 		test(fp, ft_moveup);
 }
 
-void		ft_center(t_point *fp, int length, int higth, int i)
+void		ft_center(t_point *fp, t_point *center, int length, int higth)
 {
-	t_point		*center;
-
-	center = ft_find_centermap(fp);
+	int i;
+	
+//	while(center->nextx)
+//		center = center->nextx;
+//	while(center->nexty)
+//		center = center->nexty;
+//	center = ft_find_centermap(fp);
 	if (center->x < length / 2)
 	{
 		i = length / 2 - center->x;
@@ -125,5 +129,5 @@ void		ft_center(t_point *fp, int length, int higth, int i)
 	}
 	if (center->y > higth / 2)
 		ft_center_norme(i, higth, fp, center);
-	free(center);
+	ft_putendl("hijoputa");
 }
