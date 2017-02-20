@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 11:41:52 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/20 12:32:18 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 		nw->y0 = pa->y;
 	if (pb->y < 0)
 		nw->y1 = 0;
-	else if (pv->y > fst->hight)
+	else if (pb->y > fst->hight)
 		nw->y1 = fst->hight;
 	else
 		nw->y1 = pb->y;
@@ -44,7 +44,7 @@ static t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
 {
 	if (!(nw = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
-	ft_setpoint(pa, pb, fst, new);
+	ft_setpoint(pa, pb, fst, nw);
 	nw->dx = nw->x1 - nw->x0;
 	nw->dy = nw->y1 - nw->y0;
 	if (nw->dy < 0)

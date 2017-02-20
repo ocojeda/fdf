@@ -6,7 +6,7 @@
 #    By: tfaure <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 16:27:20 by tfaure            #+#    #+#              #
-#    Updated: 2017/01/17 18:09:34 by ocojeda-         ###   ########.fr        #
+#    Updated: 2017/02/20 12:40:26 by tfaure           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,13 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	gcc $(CFLAGS) -c $(SRC)
-	ar -q $(NAME) $(OBJS)
+	@gcc $(CFLAGS) -c $(SRC)
+	@ar -q $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

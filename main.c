@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/19 15:27:35 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/20 12:33:51 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static int		my_key_func(int keycode, t_screen *fst)
 		test(fst->fp, matrice_rotate_x);
 	if (keycode == 125)
 		test(fst->fp, matrice_rotate_y);
-	if (keycode == 124);
-	if (keycode == 123);
+	if (keycode == 124)
+
+	if (keycode == 123)
+
 	if(keycode == 69)
 		test(fst->fp, ft_zoom);
 	if(keycode == 78)
@@ -130,6 +132,7 @@ t_point			*addcenter(t_point *fp)
 		}
 		temp= temp->nexty;
 	}
+	return (0);
 }
 
 int				main(int argc, char **argv)
