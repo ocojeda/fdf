@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/19 15:21:50 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/20 16:02:38 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define R_TRANSLATE 100
 
 # define RADIANCONV 0.017453259
-# define ANGLE 5
 
 
 typedef struct		s_point
