@@ -6,64 +6,64 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/18 19:34:50 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/20 11:41:52 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_setpoint(t_point *pointa, t_point *pointb, t_screen *fst, t_line *new)
+void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 {
-	if(pointa->x < 0)
-		new->x0 = 0;
-	else if(pointa->x > fst->len)
-		new->x0 = fst->len;
+	if (pa->x < 0)
+		nw->x0 = 0;
+	else if (pa->x > fst->len)
+		nw->x0 = fst->len;
 	else
-		new->x0 = pointa->x;
-	if(pointb->x < 0)
-		new->x1 = 0;
-	else if(pointb->x > fst->len)
-		new->x1 = fst->len;
+		nw->x0 = pa->x;
+	if (pb->x < 0)
+		nw->x1 = 0;
+	else if (pb->x > fst->len)
+		nw->x1 = fst->len;
 	else
-		new->x1 = pointb->x;
-	if(pointa->y < 0)
-		new->y0 = 0;
-	else if(pointa->y > fst->hight)
-		new->y0 = fst->hight;
+		nw->x1 = pb->x;
+	if (pa->y < 0)
+		nw->y0 = 0;
+	else if (pa->y > fst->hight)
+		nw->y0 = fst->hight;
 	else
-		new->y0 = pointa->y;
-	if(pointb->y < 0)
-		new->y1 = 0;
-	else if(pointb->y > fst->hight)
-		new->y1 = fst->hight;
+		nw->y0 = pa->y;
+	if (pb->y < 0)
+		nw->y1 = 0;
+	else if (pv->y > fst->hight)
+		nw->y1 = fst->hight;
 	else
-		new->y1 = pointb->y;
+		nw->y1 = pb->y;
 }
-static t_line	*ft_newline(t_point *pointa, t_point *pointb, t_line *new, t_screen*fst)
+
+static t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
 {
-	
-	if (!(new = (t_line *)malloc(sizeof(t_line))))
+	if (!(nw = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
-	ft_setpoint(pointa, pointb, fst, new);
-	new->dx = new->x1 - new->x0;
-	new->dy = new->y1 - new->y0;
-	if (new->dy < 0)
+	ft_setpoint(pa, pb, fst, new);
+	nw->dx = nw->x1 - nw->x0;
+	nw->dy = nw->y1 - nw->y0;
+	if (nw->dy < 0)
 	{
-		new->dy = (new->dy) * -1;
-		new->stepy = -1;
+		nw->dy = (nw->dy) * -1;
+		nw->stepy = -1;
 	}
 	else
-		new->stepy = 1;
-	if (new->dx < 0)
+		nw->stepy = 1;
+	if (nw->dx < 0)
 	{
-		new->dx = -(new->dx);
-		new->stepx = -1;
+		nw->dx = -(nw->dx);
+		nw->stepx = -1;
 	}
 	else
-		new->stepx = 1;
-	new->x = new->x0;
-	new->y = new->y0;
-	return (new);
+		nw->stepx = 1;
+	nw->x = nw->x0;
+	nw->y = nw->y0;
+	return (nw);
 }
 
 static int		ft_steps_else(t_line *line)
@@ -115,18 +115,20 @@ t_point			*new_point(float x, float y, float z, unsigned int color)
 	new->nexty = NULL;
 	return (new);
 }
-int				ft_boundaries(t_point *pointa, t_point *pointb, int len, int hight)
+
+int				ft_boundaries(t_point *pa, t_point *pb, int len, int hight)
 {
-	if(pointa->x < 0 && pointb->x < 0)
-		return 0;
-	if(pointa->y < 0 && pointb->y < 0)
-		return 0;
-	if(pointa->x > len && pointb->x > len)
-		return 0;
-	if(pointa->y > hight && pointb->y > hight)
-		return 0;
-	return 1;
+	if (pa->x < 0 && pb->x < 0)
+		return (0);
+	if (pa->y < 0 && pb->y < 0)
+		return (0);
+	if (pa->x > len && pb->x > len)
+		return (0);
+	if (pa->y > hight && pb->y > hight)
+		return (0);
+	return (1);
 }
+
 void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 {
 	t_line		*line;
@@ -146,8 +148,8 @@ void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 					line->x += line->stepx;
 					line->p += line->incne;
 				}
-					((unsigned int *)fst->data)[line->x + line->y * \
-						fst->len] = pointb->color;
+				((unsigned int *)fst->data)[line->x + line->y * \
+					fst->len] = pointb->color;
 			}
 		}
 		free(line);

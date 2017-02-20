@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/19 15:03:48 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/20 10:21:57 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,17 @@ t_point		*ft_find_centermap(t_point *fp)
 	while (temp)
 	{
 		temp2 = temp;
-		while(temp2)
+		while (temp2)
 		{
-			if(temp2->x < x)
+			if (temp2->x < x)
 				x = temp2->x;
-			if(temp2->x > x1)
+			if (temp2->x > x1)
 				x1 = temp2->x;
-			if(temp2->y < y)
+			if (temp2->y < y)
 				y = temp2->y;
-			if(temp2->y > y1)
+			if (temp2->y > y1)
 				y1 = temp2->y;
-		temp2 = temp2->nextx;
+			temp2 = temp2->nextx;
 		}
 		temp = temp->nexty;
 	}
@@ -103,7 +103,7 @@ void		ft_center_norme(int i, int higth, t_point *fp, t_point *center)
 void		ft_center(t_point *fp, t_point *center, int length, int higth)
 {
 	int i;
-	
+
 //	while(center->nextx)
 //		center = center->nextx;
 //	while(center->nexty)

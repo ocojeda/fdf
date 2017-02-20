@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/19 13:42:01 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/20 11:42:04 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 				temp->nextx = new_point(x++, y, ft_atoi(color[0]), \
 						ft_atoi_hexa(color[1]));
 				while (*color)
-				free(*color++);
+					free(*color++);
 			}
-				else
+			else
 			{
 				z = ft_atoi(*linep);
 				temp->nextx = new_point(x++, y, z, COLOR);
