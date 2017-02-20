@@ -6,42 +6,53 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:42:19 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/20 16:01:10 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/20 17:37:19 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		matrice_rotate_x(t_point *temp)
+void		matrice_rotate_x(t_point *temp, int angle)
 {
 	int		y;
 	double	rangle;
 
 	y = temp->y;
-	rangle = ANGLE * RADIANCONV;
+	rangle = angle * RADIANCONV;
 	temp->y = y * cos(rangle) + temp->z * -(sin(rangle));
 	temp->z = y * sin(rangle) + temp->z * cos(rangle);
 }
 
-void	matrice_rotate_y(t_point *temp)
+void	matrice_rotate_y(t_point *temp, int angle)
 {
 	int		x;
 	double	rangle;
 	
 	x = temp->x;
-	rangle = ANGLE * RADIANCONV;
+	rangle = angle * RADIANCONV;
 	temp->x = temp->x * cos(rangle) + temp->z * sin(rangle);
 	temp->z = -sin(rangle) * x + temp->z * cos(rangle);
 }
 
-void	matrice_rotate_z(t_point *temp)
+void	matrice_rotate_z(t_point *temp, int angle)
 {
-	temp->x = x * cos(45) + temp->y * -(sin(45));
-	temp->y = x * sin(45) + temp->y * cos(45);
+	int		x;
+	double	rangle;
+	
+	x = temp->x;
+	rangle = angle * RADIANCONV;
+	temp->x = x * cos(rangle) + temp->y * -(sin(rangle));
+	temp->y = x * sin(rangle) + temp->y * cos(rangle);
 }
 
-void	matrice_translate(t_point *temp, int x)
+void	matrice_translate_rl(t_point *temp, int dist)
 {
-	temp->x = x + R_TRANSLATE;
-	temp->y = temp->y + R_TRANSLATE;
+	temp->x = temp->x + dist;
+	temp->z = temp->z + dist;
+}
+
+void	matrice_translate_ud(t_point *temp, int dist)
+{
+	temp->y = temp->y + dist;
+	temp->z = temp->z + dist;
 }

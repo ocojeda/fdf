@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 16:02:38 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/20 17:37:17 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_screen
 /************* MAIN.C ***************/
 
 t_point     *test_rota(t_point *fp, void (*f)(t_point *point), t_point *center);
+t_point		*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle);
 t_point		*test(t_point *fp, void (*f)(t_point *point));
 void		print_point(t_point *point);
 t_point     *addcenter(t_point *fp);
@@ -109,12 +110,15 @@ void		ft_movel(t_point *fp);
 void		ft_zoom_out(t_point *fp);
 
 /************ FT_ATOI_HEXA.C ********/
+
 unsigned int	ft_atoi_hexa(char *nbr);
 
 /************ matrix.c **************/
 
-void	matrice_rotate_x(t_point *temp);
-void	matrice_rotate_y(t_point *temp);
-void	matrice_rotate_z(t_point *temp);
-void	matrice_translate(t_point *temp, int x);
+void	matrice_rotate_x(t_point *temp, int angle);
+void	matrice_rotate_y(t_point *temp, int angle);
+void	matrice_rotate_z(t_point *temp, int angle);
+void	matrice_translate_ud(t_point *temp, int dist);
+void	matrice_translate_rl(t_point *temp, int dist);
+
 #endif

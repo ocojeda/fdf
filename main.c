@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 12:33:51 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/20 17:37:12 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,46 @@ static int		my_key_func(int keycode, t_screen *fst)
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 126)
-		test(fst->fp, matrice_rotate_x);
+		test2(fst->fp, matrice_rotate_x, 5);
 	if (keycode == 125)
-		test(fst->fp, matrice_rotate_y);
-	if (keycode == 124)
-
+		test2(fst->fp, matrice_rotate_x, -5);
 	if (keycode == 123)
-
+		test2(fst->fp, matrice_rotate_y, 5);
+	if (keycode == 124)
+		test2(fst->fp, matrice_rotate_y, -5);
 	if(keycode == 69)
 		test(fst->fp, ft_zoom);
 	if(keycode == 78)
 		test(fst->fp, ft_zoom_out);
+	if(keycode == 91)
+		test2(fst->fp, matrice_translate_ud, -10);
+	if(keycode == 84)
+		test2(fst->fp, matrice_translate_ud, 10);
+	if(keycode == 86)
+		test2(fst->fp, matrice_translate_rl, -10);
+	if(keycode == 88)
+		test2(fst->fp, matrice_translate_rl, 10);
+	if(keycode == 89)
+	{
+		test2(fst->fp, matrice_translate_ud, -10);
+		test2(fst->fp, matrice_translate_rl, -10);
+	}
+	if(keycode == 92)
+	{
+		test2(fst->fp, matrice_translate_ud, -10);
+		test2(fst->fp, matrice_translate_rl, 10);
+	}
+	if(keycode == 83)
+	{
+		test2(fst->fp, matrice_translate_ud, 10);
+		test2(fst->fp, matrice_translate_rl, -10);
+	}
+	if(keycode == 85)
+	{
+		test2(fst->fp, matrice_translate_ud, 10);
+		test2(fst->fp, matrice_translate_rl, 10);
+	}
+
 	ft_putnbr(keycode);
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
@@ -87,6 +116,27 @@ t_point			*test(t_point *fp, void (*f)(t_point *point))
 	}
 	return (fp);
 }
+
+t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle)
+{
+	t_point		*temp;
+	t_point		*temp2;
+
+	temp = fp;
+	temp2 = fp;
+	while (temp)
+	{
+		temp2 = temp;
+		while (temp2)
+		{
+			f(temp2, angle);
+			temp2 = temp2->nextx;
+		}
+		temp= temp->nexty;
+	}
+	return (fp);
+}
+
 t_point			*test_rota(t_point *fp, void (*f)(t_point *point), t_point *center)
 {
 	t_point		*temp;
