@@ -6,15 +6,16 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:42:19 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/18 19:41:21 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/20 16:01:10 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 void		matrice_rotate_x(t_point *temp)
 {
-	int y;
-	double rangle;
+	int		y;
+	double	rangle;
 
 	y = temp->y;
 	rangle = ANGLE * RADIANCONV;
@@ -24,8 +25,8 @@ void		matrice_rotate_x(t_point *temp)
 
 void	matrice_rotate_y(t_point *temp)
 {
-	int x;
-	double rangle;
+	int		x;
+	double	rangle;
 	
 	x = temp->x;
 	rangle = ANGLE * RADIANCONV;
@@ -33,12 +34,11 @@ void	matrice_rotate_y(t_point *temp)
 	temp->z = -sin(rangle) * x + temp->z * cos(rangle);
 }
 
-/*
 void	matrice_rotate_z(t_point *temp)
 {
 	temp->x = x * cos(45) + temp->y * -(sin(45));
 	temp->y = x * sin(45) + temp->y * cos(45);
-}*/
+}
 
 void	matrice_translate(t_point *temp, int x)
 {
