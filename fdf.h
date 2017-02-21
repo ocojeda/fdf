@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 09:32:15 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/21 17:41:28 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct		s_screen
 	char			*data;
 	t_point			*fp;
 	t_point			*center;
+	int				*cpy;
 }					t_screen;
 
 /************* MAIN.C ***************/
@@ -121,4 +122,6 @@ void	matrice_rotate_z(t_point *temp, int angle);
 void	matrice_translate_ud(t_point *temp, int dist);
 void	matrice_translate_rl(t_point *temp, int dist);
 
+
+float     *ft_mapcpy(t_point *fp);
 #endif

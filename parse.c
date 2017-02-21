@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/20 11:42:04 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/21 12:39:22 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 		}
 		free(line);
 	}
-	return ((ft_set_the_end(fp->nextx, --x, NULL, NULL)));
+	temp = fp;
+	fp = fp->nextx;
+	free (temp);
+	return ((ft_set_the_end(fp, --x, NULL, NULL)));
 }
 
 t_point			*ft_get_map(char *str)

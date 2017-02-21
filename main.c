@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 10:26:03 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/21 17:53:03 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ static int		my_key_func(int keycode, t_screen *fst)
 	{
 		test3(fst->fp, matrice_translate_ud, 10);
 		test3(fst->fp, matrice_translate_rl, 10);
+	}
+	if (keycode == 87)
+	{
 	}
 	free(temp3);
 	ft_putnbr(keycode);
@@ -228,7 +231,7 @@ t_point			*addcenter(t_point *fp)
 int				main(int argc, char **argv)
 {
 	t_screen	fst;
-
+	
 	if(argc == 2)
 	{
 	fst.fp = ft_get_map(argv[1]);
@@ -238,16 +241,21 @@ int				main(int argc, char **argv)
 	fst.img = mlx_new_image(fst.mlx, fst.len, fst.hight);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);	
 	fst.center = addcenter(fst.fp);
+//	fst.cpy = ft_mapcpy(fst.fp);
+//	fst.fp = ft_resetmap(fst.fp, fst.cpy);
+	test(fst.fp, print_point);
 	ft_center(fst.fp, fst.center, fst.len, fst.hight);
 //	int w;
-//	w = 5;
+//	w = 60;
 //	while(w--)
 //	ft_zoom(fst.fp);
+//	ft_center(fst.fp, fst.center, fst.len, fst.hight);
+//	test(fst.fp, print_point);
 //	w = 900;
 //	while(w--)
 //	test(fp, ft_mover);
 //	center(fp, fst.len, fst.hight);
-//	test(fp, print_point);
+//	test(fst.fp, print_point);
 //	test_rota(fp, ft_proyection, center);
 //	ft_center(fp, center, fst.len, fst.hight);
 //	test(fp, print_point);
