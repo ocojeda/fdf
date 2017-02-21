@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 17:37:17 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/21 09:32:15 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ typedef struct		s_screen
 }					t_screen;
 
 /************* MAIN.C ***************/
-
+t_point         *test3(t_point *fp, void (*f)(t_point *point, int angle), int angle);
 t_point     *test_rota(t_point *fp, void (*f)(t_point *point), t_point *center);
-t_point		*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle);
+t_point		*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t_point *center);
 t_point		*test(t_point *fp, void (*f)(t_point *point));
 void		print_point(t_point *point);
 t_point     *addcenter(t_point *fp);
@@ -99,7 +99,7 @@ t_point		*ft_find_centermap(t_point *fp);
 
 /************* BONUS.C **************/
 
-void		ft_zoom(t_point *fp);
+void   		 ft_zoom(t_point *fp);
 void		ft_movedown(t_point *fp);
 void		ft_moveup(t_point *fp);
 void		ft_mover(t_point *fp);
