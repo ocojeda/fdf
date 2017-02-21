@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 10:10:30 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/21 10:26:03 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,34 @@
 
 static int		my_key_func(int keycode, t_screen *fst)
 {
+	t_point	*temp3;
+
+	temp3 = new_point(fst->fp->x, fst->fp->y, 0, 0);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 126)
-	{
+	{	
 		test2(fst->fp, matrice_rotate_x, 5, fst->center);
-		ft_center(fst->fp, fst->center, fst->len, fst->hight);
+		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
 	}
 	if (keycode == 125)
 	{
 		test2(fst->fp, matrice_rotate_x, -5, fst->center);
-		ft_center(fst->fp, fst->center, fst->len, fst->hight);
+		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
 	}
 	if (keycode == 123)
 	{
 		test2(fst->fp, matrice_rotate_y, 5, fst->center);
-		ft_center(fst->fp, fst->center, fst->len, fst->hight);
+		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
 	}
 	if (keycode == 124)
 	{
 		test2(fst->fp, matrice_rotate_y, -5, fst->center );
-		ft_center(fst->fp, fst->center, fst->len, fst->hight);
+		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
 	}
 	if (keycode == 69)
 		ft_zoom(fst->fp);
@@ -68,7 +75,7 @@ static int		my_key_func(int keycode, t_screen *fst)
 		test3(fst->fp, matrice_translate_ud, 10);
 		test3(fst->fp, matrice_translate_rl, 10);
 	}
-
+	free(temp3);
 	ft_putnbr(keycode);
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
