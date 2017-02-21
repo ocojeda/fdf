@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:38:15 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 09:51:57 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/21 10:10:33 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_zoom_out(t_point *fp)
 	while (temp)
 	{
 		temp2 = temp;
-		while(temp2)
+		while (temp2)
 		{
 			temp2->x /= 1.05;
 			temp2->y /= 1.05;
@@ -32,7 +32,7 @@ void	ft_zoom_out(t_point *fp)
 		}
 		temp= temp->nexty;
 	}
-//	test3(fp, matrice_translate_rl, (temp3->x - fp->x));
-//	test3(fp, matrice_translate_ud, (temp3->y - fp->y));
+	test3(fp, matrice_translate_rl, (temp3->x - fp->x));
+	test3(fp, matrice_translate_ud, (temp3->y - fp->y));
 	free(temp3);
 }

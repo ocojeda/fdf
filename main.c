@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 09:46:14 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/21 10:10:30 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,34 @@ static int		my_key_func(int keycode, t_screen *fst)
 		test2(fst->fp, matrice_rotate_y, -5, fst->center );
 		ft_center(fst->fp, fst->center, fst->len, fst->hight);
 	}
-	if(keycode == 69)
+	if (keycode == 69)
 		ft_zoom(fst->fp);
-	if(keycode == 78)
-		test(fst->fp, ft_zoom_out);
-	if(keycode == 91)
+	if (keycode == 78)
+		ft_zoom_out(fst->fp);
+	if (keycode == 91)
 		test3(fst->fp, matrice_translate_ud, -10);
-	if(keycode == 84)
+	if (keycode == 84)
 		test3(fst->fp, matrice_translate_ud, 10);
-	if(keycode == 86)
+	if (keycode == 86)
 		test3(fst->fp, matrice_translate_rl, -10);
-	if(keycode == 88)
+	if (keycode == 88)
 		test3(fst->fp, matrice_translate_rl, 10);
-	if(keycode == 89)
+	if (keycode == 89)
 	{
 		test3(fst->fp, matrice_translate_ud, -10);
 		test3(fst->fp, matrice_translate_rl, -10);
 	}
-	if(keycode == 92)
+	if (keycode == 92)
 	{
 		test3(fst->fp, matrice_translate_ud, -10);
 		test3(fst->fp, matrice_translate_rl, 10);
 	}
-	if(keycode == 83)
+	if (keycode == 83)
 	{
 		test3(fst->fp, matrice_translate_ud, 10);
 		test3(fst->fp, matrice_translate_rl, -10);
 	}
-	if(keycode == 85)
+	if (keycode == 85)
 	{
 		test3(fst->fp, matrice_translate_ud, 10);
 		test3(fst->fp, matrice_translate_rl, 10);
