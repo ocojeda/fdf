@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:40:30 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 15:43:02 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 16:57:20 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include	"fdf.h"
@@ -69,7 +69,8 @@ int			count_map(t_point *fp)
 			temp2 = temp2->nextx;
 			x++;
 		}
-			temp= temp->nexty;
+		x--;
+		temp= temp->nexty;
 	}
 	return (x);
 }
@@ -82,7 +83,8 @@ float		*ft_mapcpy(t_point *fp)
 	
 	temp = fp;
 	x = count_map(fp);
-	z = (float *)malloc(sizeof(float)*(x));
+	z = (float *)malloc(sizeof(float)*(x + 1));
+	z[x+1] = '\0';
 	temp = fp;
 	x = 0;
 	while (temp)
@@ -93,8 +95,8 @@ float		*ft_mapcpy(t_point *fp)
 			z[x++] = temp2->z;
 			temp2 = temp2->nextx;
 		}
-			temp= temp->nexty;
+		x--;
+		temp= temp->nexty;
 	}
-	z[x] = '\0';
 	return (z);
 }
