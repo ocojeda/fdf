@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 17:53:48 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/24 18:49:05 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int		my_key_func(int keycode, t_screen *fst)
 	temp3 = new_point(fst->fp->x, fst->fp->y, 0, 0);
 	if (keycode == 53)
 		exit(0);
+	if (keycode == 6)
+		ft_higher(fst->fp);
 	if (keycode == 126)
 	{	
 		test2(fst->fp, matrice_rotate_x, 5, fst->center);
@@ -184,28 +186,6 @@ t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t
 //	test(fp, print_point);
 	return (fp);
 }
-/*
-t_point			*test_rota(t_point *fp, void (*f)(t_point *point), t_point *center)
-{
-	t_point		*temp;
-	t_point		*temp2;
-
-	temp = fp;
-	temp2 = fp;
-	while (temp)
-	{
-		temp2 = temp;
-		while (temp2)
-		{
-			if(temp2 != center)
-				f(temp2);
-			temp2 = temp2->nextx;
-		}
-		temp= temp->nexty;
-	}
-	return (fp);
-}
-*/
 t_point			*addcenter(t_point *fp)
 {
 	t_point		*temp;
