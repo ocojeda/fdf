@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 15:53:20 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/21 10:10:35 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/24 19:50:57 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_zoom(t_point *fp)
 		temp2 = temp;
 		while(temp2)
 		{
-			temp2->x *= 1.05;
-			temp2->y *= 1.05;
+			temp2->x *= 1.01;
+			temp2->y *= 1.01;
 			temp2 = temp2->nextx;
 		}
 		temp= temp->nexty;
@@ -36,22 +36,11 @@ void	ft_zoom(t_point *fp)
 	test3(fp, matrice_translate_ud, (temp3->y - fp->y));
 	free(temp3);
 }
-void	ft_movedown(t_point *fp)
-{
-	fp->y += 1;
-}
 
-void	ft_moveup(t_point *fp)
+void	ft_set_zoom(t_point *fp)
 {
-	fp->y -= 1;
-}
-
-void	ft_mover(t_point *fp)
-{
-	fp->x += 1;
-}
-
-void	ft_movel(t_point *fp)
-{
-	fp->x -= 1;
+	while (ft_maplength(fp) < 750 && ft_maphight(fp) < 600)
+	{
+		ft_zoom(fp);
+	}
 }

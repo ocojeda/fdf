@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/24 13:38:34 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 19:50:54 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,29 @@
   return (i);
   }*/
 
-/*int			ft_maphigh(t_point *fp)
-  {
-  t_point		*temp;
-  int			i;
+int			ft_maphight(t_point *fp)
+{
+	t_point		*temp;
 
-  i = 0;
-  temp = fp;
-  while (temp)
-  {
-  i++;
-  temp = temp->nexty;
-  }
-  return (i);
-  }*/
+	temp = fp;
+	while (temp->nexty)
+	{
+		temp = temp->nexty;
+	}
+	return (temp->y - fp->y);
+}
 
-/*int			ft_maplength(t_point *fp)
-  {
-  t_point		*temp;
-  int			i;
-
-  i = 0;
-  temp = fp;
-  while (temp)
-  {
-  i++;
-  temp = temp->nextx;
-  }
-  return (i);
-  }*/
+int			ft_maplength(t_point *fp)
+{
+	t_point		*temp;
+	
+	temp = fp;
+	while (temp->nextx)
+	{
+		temp = temp->nextx;
+	}
+	return (temp->x - fp->x);
+}
 
 t_point		*ft_find_centermap(t_point *fp)
 {

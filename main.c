@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 18:49:05 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 19:13:43 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int		my_key_func(int keycode, t_screen *fst)
 	{
 		ft_resetmap(fst->fp, fst->cpy);
 		while(i--)
-			ft_zoom(fst->fp);
+			ft_set_zoom(fst->fp);
 		ft_center(fst->fp, fst->center, fst->len, fst->hight);
 	}
 	free(temp3);
