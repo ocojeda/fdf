@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 15:20:54 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:47:30 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static int		my_key_func(int keycode, t_screen *fst)
 	}
 	if (keycode == 87)
 	{
+		ft_resetmap(fst->fp, fst->cpy);
+		ft_center(fst->fp, fst->center, fst->len, fst->hight);
 	}
 	free(temp3);
 	ft_putnbr(keycode);
@@ -154,7 +156,6 @@ t_point			*test3(t_point *fp, void (*f)(t_point *point, int angle), int angle)
 		}
 		temp= temp->nexty;
 	}
-//	test(fp, print_point);
 	return (fp);
 
 }
@@ -242,7 +243,7 @@ int				main(int argc, char **argv)
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);	
 	fst.cpy = ft_mapcpy(fst.fp);
 	fst.center = addcenter(fst.fp);
-	fst.fp = ft_resetmap(fst.fp, fst.cpy);
+	ft_resetmap(fst.fp, fst.cpy);
 //int i = 0;
 //	while(fst.cpy[i])
 //	{

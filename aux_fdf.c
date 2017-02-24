@@ -6,29 +6,11 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:40:30 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 15:16:02 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:43:02 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include	"fdf.h"
-t_point		*ft_resetcenter(t_point *fp)
-{
-	t_point *temp;
-
-	temp = fp;
-/*	while(temp->nexty)
-		temp = temp->nexty;
-	while(temp->nextx)
-		temp = temp->nextx;
-	free(temp);
-	temp = fp;
-	while(temp->nexty)
-		temp = temp->nexty;
-	while(temp->nextx)
-		temp = temp->nextx;
-	temp->nextx = addcenter(fp);*/
-	return fp;
-}
-t_point		*ft_resetmap(t_point *fp, float *z0)
+void		ft_resetmap(t_point *fp, float *z0)
 {
 	int x;
 	int y;
@@ -62,7 +44,14 @@ t_point		*ft_resetmap(t_point *fp, float *z0)
 		y++;
 		temp= temp->nexty;
 	}
-	return fp;
+	temp = fp;
+	while(temp->nexty)
+		temp = temp->nexty;
+	while(temp->nextx)
+		temp = temp->nextx;
+	temp->y /= 2;
+	temp->x /= 2;
+
 }
 int			count_map(t_point *fp)
 {

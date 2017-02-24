@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 10:12:17 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:58:08 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void		ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2)
 		}
 		t = t->nexty;
 	}
+	t = fp;
+	while(t->nextx)
+		t = t->nextx;
+	while(t->nexty->nexty)
+		t = t->nexty;
+	ft_put_diagonal(t->nexty, t, fst);
 }

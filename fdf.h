@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 12:09:34 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:28:19 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,6 @@ void	matrice_rotate_z(t_point *temp, int angle);
 void	matrice_translate_ud(t_point *temp, int dist);
 void	matrice_translate_rl(t_point *temp, int dist);
 
-
-float     *ft_mapcpy(t_point *fp);
+void	resetmap(t_point *fp, float *z0);
+float   *ft_mapcpy(t_point *fp);
 #endif
