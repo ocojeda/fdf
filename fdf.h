@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 15:28:19 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:04:02 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,9 @@ void	matrice_translate_rl(t_point *temp, int dist);
 
 void	resetmap(t_point *fp, float *z0);
 float   *ft_mapcpy(t_point *fp);
+
+/************ fl_to_int.c *************/
+
+int	fl_to_int(float fl);
+
 #endif

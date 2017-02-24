@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 12:32:18 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/24 16:27:03 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 	else if (pa->x > fst->len)
 		nw->x0 = fst->len;
 	else
-		nw->x0 = pa->x;
+		nw->x0 = fl_to_int(pa->x);
 	if (pb->x < 0)
 		nw->x1 = 0;
 	else if (pb->x > fst->len)
 		nw->x1 = fst->len;
 	else
-		nw->x1 = pb->x;
+		nw->x1 = fl_to_int(pb->x);
 	if (pa->y < 0)
 		nw->y0 = 0;
 	else if (pa->y > fst->hight)
 		nw->y0 = fst->hight;
 	else
-		nw->y0 = pa->y;
+		nw->y0 = fl_to_int(pa->y);
 	if (pb->y < 0)
 		nw->y1 = 0;
 	else if (pb->y > fst->hight)
 		nw->y1 = fst->hight;
 	else
-		nw->y1 = pb->y;
+		nw->y1 = fl_to_int(pb->y);
 }
 
 static t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)

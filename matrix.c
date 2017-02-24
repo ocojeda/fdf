@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:42:19 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/21 08:07:47 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 16:58:42 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		matrice_rotate_x(t_point *temp, int angle)
 {
-	int		y;
+	double	y;
 	double	rangle;
 
 	y = temp->y;
@@ -25,7 +25,7 @@ void		matrice_rotate_x(t_point *temp, int angle)
 
 void	matrice_rotate_y(t_point *temp, int angle)
 {
-	int		x;
+	double	x;
 	double	rangle;
 	
 	x = temp->x;
@@ -36,7 +36,7 @@ void	matrice_rotate_y(t_point *temp, int angle)
 
 void	matrice_rotate_z(t_point *temp, int angle)
 {
-	int		x;
+	double	x;
 	double	rangle;
 	
 	x = temp->x;
