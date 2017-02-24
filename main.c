@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 16:59:04 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:53:48 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,32 +247,7 @@ int				main(int argc, char **argv)
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);	
 	fst.cpy = ft_mapcpy(fst.fp);
 	fst.center = addcenter(fst.fp);
-//	ft_resetmap(fst.fp, fst.cpy);
-//int i = 0;
-//	while(fst.cpy[i])
-//	{
-//		ft_putnbr(fst.cpy[i]);
-//		printf("%f ",fst.cpy[i]);
-//		i++;
-//	}
-//	fst.fp = ft_resetmap(fst.fp, fst.cpy);
-//	test(fst.fp, print_point);
-	ft_center(fst.fp, fst.center, fst.len, fst.hight);
-	ft_putendl("hello");
-//	int w;
-//	w = 60;
-//	while(w--)
-//	ft_zoom(fst.fp);
-//	ft_center(fst.fp, fst.center, fst.len, fst.hight);
-//	test(fst.fp, print_point);
-//	w = 900;
-//	while(w--)
-//	test(fp, ft_mover);
-//	center(fp, fst.len, fst.hight);
-//	test(fst.fp, print_point);
-//	test_rota(fp, ft_proyection, center);
-//	ft_center(fp, center, fst.len, fst.hight);
-//	test(fp, print_point);
+	my_key_func(87, &fst);
 	ft_put_pix_map(fst.fp, &fst, NULL, NULL);	
 	fst.win = mlx_new_window(fst.mlx, fst.len, fst.hight, argv[1]);
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
