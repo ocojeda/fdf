@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 16:27:03 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/24 19:52:14 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 		nw->x1 = fst->len;
 	else
 		nw->x1 = fl_to_int(pb->x);
-	if (pa->y < 0)
-		nw->y0 = 0;
-	else if (pa->y > fst->hight)
-		nw->y0 = fst->hight;
-	else
+//	if (pa->y < 0)
+//		nw->y0 = 0;
+//	else if (pa->y > fst->hight)
+//		nw->y0 = fst->hight;
+//	else
 		nw->y0 = fl_to_int(pa->y);
-	if (pb->y < 0)
-		nw->y1 = 0;
-	else if (pb->y > fst->hight)
-		nw->y1 = fst->hight;
-	else
+//	if (pb->y < 0)
+//		nw->y1 = 0;
+//	else if (pb->y > fst->hight)
+//		nw->y1 = fst->hight;
+//	else
 		nw->y1 = fl_to_int(pb->y);
 }
 
@@ -91,9 +91,10 @@ static int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
 				line->y += line->stepy;
 				line->p += line->incne;
 			}
-			if (((line->x + line->y * fst->len) > 0) && ((line->x + line->y\
+//			if (((line->x + line->y * fst->len) > 0) && ((line->x + line->y\
 					* fst->len) < (fst->len * fst->hight)))
-				((unsigned int *)fst->data)[line->x + line->y * fst->len] = col;
+			if(line->x > 0 || line->x < fst->len)
+			((unsigned int *)fst->data)[line->x + line->y * fst->len] = col;
 		}
 		return (1);
 	}
@@ -148,6 +149,7 @@ void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 					line->x += line->stepx;
 					line->p += line->incne;
 				}
+				if(line->x < fst->len && line->x > 0)
 				((unsigned int *)fst->data)[line->x + line->y * \
 					fst->len] = pointb->color;
 			}
