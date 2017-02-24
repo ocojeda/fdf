@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 17:04:02 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/24 17:59:00 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		ft_movel(t_point *fp);
 /************* BONUS1.C *************/
 
 void		ft_zoom_out(t_point *fp);
+void		ft_higher(t_point *fp);
 
 /************ FT_ATOI_HEXA.C ********/
 
