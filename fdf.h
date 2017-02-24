@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 17:41:28 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 12:09:34 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct		s_screen
 	char			*data;
 	t_point			*fp;
 	t_point			*center;
-	int				*cpy;
+	float				*cpy;
 }					t_screen;
 
 /************* MAIN.C ***************/

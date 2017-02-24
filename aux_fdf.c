@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:40:30 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 17:47:36 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:16:02 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include	"fdf.h"
@@ -28,15 +28,25 @@ t_point		*ft_resetcenter(t_point *fp)
 	temp->nextx = addcenter(fp);*/
 	return fp;
 }
-t_point		*ft_resetmap(t_point *fp, int *z0)
+t_point		*ft_resetmap(t_point *fp, float *z0)
 {
 	int x;
 	int y;
+	int c;
 	t_point *temp;
 	t_point *temp2;
 	
 	x = 0;
 	y = 0;
+	c = 0;
+	temp = fp;
+	while(temp->nextx)
+	{
+		temp = temp->nextx;
+		c++;
+	}
+	temp = fp;
+	ft_putnbr(c);
 	while (temp)
 	{
 		x = 0;
@@ -45,25 +55,23 @@ t_point		*ft_resetmap(t_point *fp, int *z0)
 		{
 			temp2->x = x;
 			temp2->y = y;
-			temp2->z = z0[x];
+			temp2->z = z0[x + y * c];
 			temp2 = temp2->nextx;
 			x++;
 		}
 		y++;
 		temp= temp->nexty;
 	}
-	ft_resetcenter(fp);
 	return fp;
 }
-float		*ft_mapcpy(t_point *fp)
+int			count_map(t_point *fp)
 {
 	t_point		*temp;
 	t_point		*temp2;
-	int			x;
-	float 		*z;
-	
-	temp = fp;
+	int x;
+
 	x = 0;
+	temp = fp;
 	while (temp)
 	{
 		temp2 = temp;
@@ -74,7 +82,18 @@ float		*ft_mapcpy(t_point *fp)
 		}
 			temp= temp->nexty;
 	}
-	z = (float *)malloc(sizeof(float)*(x+1));
+	return (x);
+}
+float		*ft_mapcpy(t_point *fp)
+{
+	t_point		*temp;
+	t_point		*temp2;
+	int			x;
+	float 		*z;
+	
+	temp = fp;
+	x = count_map(fp);
+	z = (float *)malloc(sizeof(float)*(x));
 	temp = fp;
 	x = 0;
 	while (temp)
@@ -88,8 +107,5 @@ float		*ft_mapcpy(t_point *fp)
 			temp= temp->nexty;
 	}
 	z[x] = '\0';
-	test(fp, print_point);
-	while(x--)
-		printf("%f ",z[x]);
 	return (z);
 }

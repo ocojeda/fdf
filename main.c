@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/21 17:53:03 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:20:54 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,11 +240,20 @@ int				main(int argc, char **argv)
 	fst.mlx = mlx_init();
 	fst.img = mlx_new_image(fst.mlx, fst.len, fst.hight);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);	
+	fst.cpy = ft_mapcpy(fst.fp);
 	fst.center = addcenter(fst.fp);
-//	fst.cpy = ft_mapcpy(fst.fp);
+	fst.fp = ft_resetmap(fst.fp, fst.cpy);
+//int i = 0;
+//	while(fst.cpy[i])
+//	{
+//		ft_putnbr(fst.cpy[i]);
+//		printf("%f ",fst.cpy[i]);
+//		i++;
+//	}
 //	fst.fp = ft_resetmap(fst.fp, fst.cpy);
-	test(fst.fp, print_point);
+//	test(fst.fp, print_point);
 	ft_center(fst.fp, fst.center, fst.len, fst.hight);
+	ft_putendl("hello");
 //	int w;
 //	w = 60;
 //	while(w--)
@@ -265,6 +274,7 @@ int				main(int argc, char **argv)
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);
 	mlx_loop(fst.mlx);
 	ft_erase_map(fst.fp, NULL, NULL);
+	free(fst.cpy);
 	}
 	return (0);
 }

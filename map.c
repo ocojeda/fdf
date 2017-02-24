@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/21 08:58:36 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/24 13:38:34 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,4 @@ void		ft_center(t_point *fp, t_point *center, int length, int higth)
 {
 	test3(fp, matrice_translate_rl, length/2 - center->x);
 	test3(fp, matrice_translate_ud, higth/2 - center->y);
-	ft_putstr("hijoputa");
 }
