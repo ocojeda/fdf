@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 15:40:22 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 16:38:13 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 	nw->y1 = fl_to_int(pb->y);
 }
 
-static t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
+t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
 {
 	if (!(nw = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
@@ -46,7 +46,7 @@ static t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
 	return (nw);
 }
 
-static int		ft_steps_else(t_line *line)
+int		ft_steps_else(t_line *line)
 {
 	line->p = (2 * line->dx) - line->dy;
 	line->ince = 2 * line->dx;
@@ -54,7 +54,7 @@ static int		ft_steps_else(t_line *line)
 	return (0);
 }
 
-static int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
+int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
 {
 	if (line->dx > line->dy)
 	{

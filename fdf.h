@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 19:50:59 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 16:38:22 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ void			ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2);
 
 void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst);
 t_point			*new_point(float x, float y, float z, unsigned int color);
-
+int      ft_steps(t_line *line, t_screen *fst, unsigned int col);
+t_line   *ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst);
+void            ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw);
+int      ft_steps_else(t_line *line);
 /*************  MAP.C  **************/
 
 void			ft_center(t_point *fp, t_point *center, int lenght, int hight);
