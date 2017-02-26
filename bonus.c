@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 15:53:20 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/24 19:50:57 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 15:17:00 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	ft_zoom(t_point *fp)
 	while (temp)
 	{
 		temp2 = temp;
-		while(temp2)
+		while (temp2)
 		{
 			temp2->x *= 1.01;
 			temp2->y *= 1.01;
 			temp2 = temp2->nextx;
 		}
-		temp= temp->nexty;
+		temp = temp->nexty;
 	}
 	test3(fp, matrice_translate_rl, (temp3->x - fp->x));
 	test3(fp, matrice_translate_ud, (temp3->y - fp->y));

@@ -6,26 +6,11 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/24 19:50:54 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 15:28:00 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*int			ft_maplong(t_point *fp)
-  {
-  t_point		*temp;
-  int			i;
-
-  i = 0;
-  temp = fp;
-  while (temp)
-  {
-  i++;
-  temp = temp->nextx;
-  }
-  return (i);
-  }*/
 
 int			ft_maphight(t_point *fp)
 {
@@ -42,7 +27,7 @@ int			ft_maphight(t_point *fp)
 int			ft_maplength(t_point *fp)
 {
 	t_point		*temp;
-	
+
 	temp = fp;
 	while (temp->nextx)
 	{
@@ -89,6 +74,6 @@ t_point		*ft_find_centermap(t_point *fp)
 
 void		ft_center(t_point *fp, t_point *center, int length, int higth)
 {
-	test3(fp, matrice_translate_rl, length/2 - center->x);
-	test3(fp, matrice_translate_ud, higth/2 - center->y);
+	test3(fp, matrice_translate_rl, length / 2 - center->x);
+	test3(fp, matrice_translate_ud, higth / 2 - center->y);
 }

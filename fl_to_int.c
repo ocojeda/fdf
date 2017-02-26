@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:13:46 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/24 16:21:56 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 15:09:38 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	fl_to_int(float fl)
 	if (tmp == tmp2)
 		return ((new = fl) + 1);
 	else
-		return(new = fl);
+		return (new = fl);
 }
