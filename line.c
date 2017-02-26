@@ -6,13 +6,13 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 16:38:13 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 17:58:59 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
+void	ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 {
 	nw->x0 = fl_to_int(pa->x);
 	nw->x1 = fl_to_int(pb->x);
