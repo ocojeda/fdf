@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:40:30 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 16:43:39 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 16:49:45 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ int			ft_map_count(t_point *fp)
 		i++;
 	}
 	return (i);
+}
+
+void		reset_map(t_point *temp)
+{
+	while (temp->nexty)
+		temp = temp->nexty;
+	while (temp->nextx)
+		temp = temp->nextx;
+	temp->y /= 2;
+	temp->x /= 2;
 }
 
 void		ft_resetmap(t_point *fp, float *z0)
@@ -54,13 +64,7 @@ void		ft_resetmap(t_point *fp, float *z0)
 		y++;
 		temp = temp->nexty;
 	}
-	reset_map
-	while (temp->nexty)
-		temp = temp->nexty;
-	while (temp->nextx)
-		temp = temp->nextx;
-	temp->y /= 2;
-	temp->x /= 2;
+	reset_map(fp);
 }
 
 int			count_map(t_point *fp)
