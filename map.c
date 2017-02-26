@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:12:44 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/26 17:58:35 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 18:16:52 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,15 @@ int			ft_maplength(t_point *fp)
 	return (temp->x - fp->x);
 }
 
-t_point		*ft_find_centermap(t_point *fp)
+t_point		*ft_find_centermap(t_point *fp, float x, float x1, float y)
 {
-	t_point		*temp;
 	t_point		*temp2;
-	float		x;
-	float		x1;
-	float		y;
 	float		y1;
 
-	x = fp->x;
-	x1 = fp->x;
 	y1 = fp->y;
-	y1 = fp->y;
-	temp = fp;
-	while (temp)
+	while (fp)
 	{
-		temp2 = temp;
+		temp2 = fp;
 		while (temp2)
 		{
 			if (temp2->x < x)
@@ -65,7 +57,7 @@ t_point		*ft_find_centermap(t_point *fp)
 				y1 = temp2->y;
 			temp2 = temp2->nextx;
 		}
-		temp = temp->nexty;
+		fp = fp->nexty;
 	}
 	x = (x1 - x) / 2 + x;
 	y = (y1 - y) / 2 + y;

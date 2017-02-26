@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 17:22:43 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 18:16:50 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			ft_rotate(int keycode, t_screen *fst, t_point *temp)
 	}
 	free(temp);
 }
+
 void			choose_action(int keycode, t_screen *fst)
 {
 	int i;
@@ -91,6 +92,7 @@ void			choose_action(int keycode, t_screen *fst)
 		ft_center(fst->fp, fst->center, fst->len, fst->hight);
 	}
 }
+
 static int		my_key_func(int keycode, t_screen *fst)
 {
 	choose_action(keycode, fst);
@@ -152,6 +154,7 @@ t_point			*test(t_point *fp, void (*f)(t_point *point))
 	}
 	return (fp);
 }
+
 t_point			*test3(t_point *fp, void (*f)(t_point *point, int angle), int angle)
 {
 	t_point		*temp;
@@ -172,6 +175,7 @@ t_point			*test3(t_point *fp, void (*f)(t_point *point, int angle), int angle)
 	return (fp);
 
 }
+
 t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t_point *center)
 {
 	t_point		*temp;
@@ -184,15 +188,14 @@ t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t
 		temp2 = temp;
 		while (temp2)
 		{
-	//		if(temp2 != center)
-				f(temp2, angle);
+			f(temp2, angle);
 			temp2 = temp2->nextx;
 		}
 		temp= temp->nexty;
 	}
-//	test(fp, print_point);
 	return (fp);
 }
+
 t_point			*addcenter(t_point *fp)
 {
 	t_point		*temp;
@@ -209,7 +212,7 @@ t_point			*addcenter(t_point *fp)
 		{
 		if(temp2->nexty == NULL && temp2->nextx == NULL && flag)
 		{
-			temp2->nextx = ft_find_centermap(fp);
+			temp2->nextx = ft_find_centermap(fp, fp->x, fp->x, fp->y);
 			return (temp2->nextx);
 			flag = 0;
 		}

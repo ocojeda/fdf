@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 17:46:03 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 18:10:11 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ int      ft_steps_else(t_line *line);
 /*************  MAP.C  **************/
 
 void			ft_center(t_point *fp, t_point *center, int lenght, int hight);
-t_point			*ft_find_centermap(t_point *fp);
-//int			ft_maplong(t_point *fp);
+t_point			*ft_find_centermap(t_point *fp, float x, float x1, float y);
 int				ft_maphight(t_point *fp);
 int				ft_maplength(t_point *fp);
 
