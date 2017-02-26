@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 18:16:50 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 18:52:52 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,31 @@ void			ft_rotate(int keycode, t_screen *fst, t_point *temp)
 	}
 	free(temp);
 }
-
+void			ft_translate(int keycode, t_screen *fst)
+{
+	if (keycode == 53)
+		exit(0);
+	if (keycode == 69)
+		ft_zoom(fst->fp);
+	if (keycode == 78)
+		ft_zoom_out(fst->fp);
+	if (keycode == 84)
+		test3(fst->fp, matrice_translate_ud, 10);
+	if (keycode == 86)
+		test3(fst->fp, matrice_translate_rl, -10);
+	if (keycode == 83)
+	{
+		test3(fst->fp, matrice_translate_ud, 10);
+		test3(fst->fp, matrice_translate_rl, -10);
+	}
+	if (keycode == 85)
+	{
+		test3(fst->fp, matrice_translate_ud, 10);
+		test3(fst->fp, matrice_translate_rl, 10);
+	}
+	if (keycode == 6)
+		ft_higher(fst->fp);
+}
 void			choose_action(int keycode, t_screen *fst)
 {
 	int i;
@@ -48,20 +72,10 @@ void			choose_action(int keycode, t_screen *fst)
 	i = 70;
 	if(keycode > 100)
 		ft_rotate(keycode, fst, NULL);
-	if (keycode == 53)
-		exit(0);
-	if (keycode == 6)
-		ft_higher(fst->fp);
-	if (keycode == 69)
-		ft_zoom(fst->fp);
-	if (keycode == 78)
-		ft_zoom_out(fst->fp);
+	if(keycode >= 6 && keycode < 86)
+		ft_translate(keycode, fst);
 	if (keycode == 91)
 		test3(fst->fp, matrice_translate_ud, -10);
-	if (keycode == 84)
-		test3(fst->fp, matrice_translate_ud, 10);
-	if (keycode == 86)
-		test3(fst->fp, matrice_translate_rl, -10);
 	if (keycode == 88)
 		test3(fst->fp, matrice_translate_rl, 10);
 	if (keycode == 89)
@@ -72,16 +86,6 @@ void			choose_action(int keycode, t_screen *fst)
 	if (keycode == 92)
 	{
 		test3(fst->fp, matrice_translate_ud, -10);
-		test3(fst->fp, matrice_translate_rl, 10);
-	}
-	if (keycode == 83)
-	{
-		test3(fst->fp, matrice_translate_ud, 10);
-		test3(fst->fp, matrice_translate_rl, -10);
-	}
-	if (keycode == 85)
-	{
-		test3(fst->fp, matrice_translate_ud, 10);
 		test3(fst->fp, matrice_translate_rl, 10);
 	}
 	if (keycode == 87)
