@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 19:52:14 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 14:05:05 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void			ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 {
-	if (pa->x < 0)
-		nw->x0 = 0;
-	else if (pa->x > fst->len)
-		nw->x0 = fst->len;
-	else
+//	if (pa->x < 0)
+//		nw->x0 = 0;
+//	else if (pa->x > fst->len)
+//		nw->x0 = fst->len;
+//	else
 		nw->x0 = fl_to_int(pa->x);
-	if (pb->x < 0)
-		nw->x1 = 0;
-	else if (pb->x > fst->len)
-		nw->x1 = fst->len;
-	else
+//	if (pb->x < 0)
+//		nw->x1 = 0;
+//	else if (pb->x > fst->len)
+//		nw->x1 = fst->len;
+//	else
 		nw->x1 = fl_to_int(pb->x);
 //	if (pa->y < 0)
 //		nw->y0 = 0;
@@ -91,9 +91,7 @@ static int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
 				line->y += line->stepy;
 				line->p += line->incne;
 			}
-//			if (((line->x + line->y * fst->len) > 0) && ((line->x + line->y\
-					* fst->len) < (fst->len * fst->hight)))
-			if(line->x > 0 || line->x < fst->len)
+			if(line->x > 0 && line->x < fst->len)
 			((unsigned int *)fst->data)[line->x + line->y * fst->len] = col;
 		}
 		return (1);
@@ -134,7 +132,7 @@ void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 {
 	t_line		*line;
 
-	if (pointa && pointb && ft_boundaries(pointa, pointb, fst->len, fst->hight))
+	if (ft_boundaries(pointa, pointb, fst->len, fst->hight))
 	{
 		line = ft_newline(pointb, pointa, NULL, fst);
 		if (!ft_steps(line, fst, pointb->color))

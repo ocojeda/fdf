@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 15:58:08 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 13:36:48 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void		ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2)
 		t2 = t;
 		while (t2 && (t2->nextx != fst->center))
 		{
+			if(t2->nextx != NULL)
 			ft_put_diagonal(t2, t2->nextx, fst);
+			if(t2->nexty != NULL)
 			ft_put_diagonal(t2, t2->nexty, fst);
 			t2 = t2->nextx;
 		}
@@ -43,5 +45,6 @@ void		ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2)
 		t = t->nextx;
 	while(t->nexty->nexty)
 		t = t->nexty;
+	if(t->nexty && t)
 	ft_put_diagonal(t->nexty, t, fst);
 }
