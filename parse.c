@@ -6,20 +6,11 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/21 12:39:22 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 15:46:13 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static char		**ft_iscolor(char *str)
-{
-	if (ft_strchr(str, ','))
-	{
-		return (ft_strsplit(str, ','));
-	}
-	return (0);
-}
 
 int				ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3)
 {
@@ -69,13 +60,32 @@ static t_point	*ft_set_the_end(t_point *fp, int a, t_point *t, t_point *t2)
 	return (fp);
 }
 
-static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
+int				ft_makepoint(char **linep, t_point *t, int x, int y)
 {
 	char		**color;
+	int			z;
+
+	if (ft_strchr(*linep, ','))
+	{
+		color = ft_strsplit(*linep, ',');
+		t->nextx = new_point(x++, y, ft_atoi(color[0]), \
+				ft_atoi_hexa(color[1]));
+		while (*color)
+			free(*color++);
+	}
+	else
+	{
+		z = ft_atoi(*linep);
+		t->nextx = new_point(x++, y, z, COLOR);
+	}
+	return (x);
+}
+
+static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
+{
 	char		**linep;
 	char		*line;
 	int			x;
-	int			z;
 
 	while (get_next_line(fd, &line) && ++y >= -1)
 	{
@@ -83,18 +93,7 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 		linep = ft_strsplit(line, ' ');
 		while (*linep)
 		{
-			if ((color = ft_iscolor(*linep)))
-			{
-				temp->nextx = new_point(x++, y, ft_atoi(color[0]), \
-						ft_atoi_hexa(color[1]));
-				while (*color)
-					free(*color++);
-			}
-			else
-			{
-				z = ft_atoi(*linep);
-				temp->nextx = new_point(x++, y, z, COLOR);
-			}
+			x = ft_makepoint(linep, temp, x, y);
 			temp = temp->nextx;
 			free(*linep++);
 		}
@@ -102,7 +101,7 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 	}
 	temp = fp;
 	fp = fp->nextx;
-	free (temp);
+	free(temp);
 	return ((ft_set_the_end(fp, --x, NULL, NULL)));
 }
 
