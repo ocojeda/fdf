@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 14:23:55 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/26 14:27:44 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 14:30:06 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 					line->x += line->stepx;
 					line->p += line->incne;
 				}
-				if(line->x < fst->len && line->x > 0)
+				if (line->x < fst->len && line->x > 0)
 					((unsigned int *)fst->data)[line->x + line->y * \
 						fst->len] = pointb->color;
 			}
