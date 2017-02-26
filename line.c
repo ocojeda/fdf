@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 14:29:45 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 15:40:22 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int		ft_steps(t_line *line, t_screen *fst, unsigned int col)
 				line->y += line->stepy;
 				line->p += line->incne;
 			}
-			if (line->x > 0 && line->x < fst->len)
+			if (line->x > 0 && line->x < fst->len && line->y > 0)
 				((unsigned int *)fst->data)[line->x + line->y * fst->len] = col;
 		}
 		return (1);
