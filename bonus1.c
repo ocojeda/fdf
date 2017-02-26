@@ -6,12 +6,20 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:38:15 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 15:17:06 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 17:45:50 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+char	**ft_iscolor(char *str)
+{
+	if (ft_strchr(str, ','))
+	{
+		return (ft_strsplit(str, ','));
+	}
+	return (0);
+}
 void	ft_zoom_out(t_point *fp)
 {
 	t_point		*temp;

@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/26 15:46:13 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/26 17:46:41 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,13 @@ static t_point	*ft_set_the_end(t_point *fp, int a, t_point *t, t_point *t2)
 	}
 	return (fp);
 }
-
 int				ft_makepoint(char **linep, t_point *t, int x, int y)
 {
 	char		**color;
 	int			z;
 
-	if (ft_strchr(*linep, ','))
+	if ((color = ft_iscolor(*linep)))
 	{
-		color = ft_strsplit(*linep, ',');
 		t->nextx = new_point(x++, y, ft_atoi(color[0]), \
 				ft_atoi_hexa(color[1]));
 		while (*color)

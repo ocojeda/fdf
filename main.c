@@ -6,47 +6,51 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/24 19:13:43 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/26 17:22:43 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static int		my_key_func(int keycode, t_screen *fst)
+void			ft_rotate(int keycode, t_screen *fst, t_point *temp)
 {
-	t_point	*temp3;
-	int i;
-	
-	i = 70;
-	temp3 = new_point(fst->fp->x, fst->fp->y, 0, 0);
-	if (keycode == 53)
-		exit(0);
-	if (keycode == 6)
-		ft_higher(fst->fp);
+	temp = new_point(fst->fp->x, fst->fp->y, 0, 0);
 	if (keycode == 126)
 	{	
 		test2(fst->fp, matrice_rotate_x, 5, fst->center);
-		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
-		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
+		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 125)
 	{
 		test2(fst->fp, matrice_rotate_x, -5, fst->center);
-		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
-		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
+		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 123)
 	{
 		test2(fst->fp, matrice_rotate_y, 5, fst->center);
-		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
-		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
+		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 124)
 	{
 		test2(fst->fp, matrice_rotate_y, -5, fst->center );
-		test3(fst->fp, matrice_translate_rl, (temp3->x - fst->fp->x));
-		test3(fst->fp, matrice_translate_ud, (temp3->y - fst->fp->y));
+		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
+		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
+	free(temp);
+}
+void			choose_action(int keycode, t_screen *fst)
+{
+	int i;
+	
+	i = 70;
+	if(keycode > 100)
+		ft_rotate(keycode, fst, NULL);
+	if (keycode == 53)
+		exit(0);
+	if (keycode == 6)
+		ft_higher(fst->fp);
 	if (keycode == 69)
 		ft_zoom(fst->fp);
 	if (keycode == 78)
@@ -86,7 +90,10 @@ static int		my_key_func(int keycode, t_screen *fst)
 			ft_set_zoom(fst->fp);
 		ft_center(fst->fp, fst->center, fst->len, fst->hight);
 	}
-	free(temp3);
+}
+static int		my_key_func(int keycode, t_screen *fst)
+{
+	choose_action(keycode, fst);
 	ft_putnbr(keycode);
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
