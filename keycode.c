@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 10:04:50 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 10:10:30 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 10:40:21 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static void		ft_rotate(int keycode, t_screen *fst, t_point *temp)
 	temp = new_point(fst->fp->x, fst->fp->y, 0, 0);
 	if (keycode == 126)
 	{
-		test2(fst->fp, matrice_rotate_x, 5, fst->center);
+		test2(fst->fp, matrice_rotate_x, 5);
 		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
 		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 125)
 	{
-		test2(fst->fp, matrice_rotate_x, -5, fst->center);
+		test2(fst->fp, matrice_rotate_x, -5);
 		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
 		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 123)
 	{
-		test2(fst->fp, matrice_rotate_y, 5, fst->center);
+		test2(fst->fp, matrice_rotate_y, 5);
 		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
 		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}
 	if (keycode == 124)
 	{
-		test2(fst->fp, matrice_rotate_y, -5, fst->center );
+		test2(fst->fp, matrice_rotate_y, -5);
 		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
 		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
 	}

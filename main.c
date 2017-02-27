@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 10:19:41 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 10:39:01 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_point			*test3(t_point *fp, void (*f)(t_point *point, int gle), int gle)
 
 }
 
-t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t_point *center)
+t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle)
 {
 	t_point		*temp;
 	t_point		*temp2;

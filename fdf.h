@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 10:19:44 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 10:40:42 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct		s_screen
 /************* MAIN.C ***************/
 t_point         *test3(t_point *fp, void (*f)(t_point *point, int angle), int angle);
 t_point			*test_rota(t_point *fp, void (*f)(t_point *point), t_point *center);
-t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t_point *center);
+t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle);
 t_point			*test(t_point *fp, void (*f)(t_point *point));
 void			print_point(t_point *point);
 t_point			*addcenter(t_point *fp);
@@ -96,8 +96,8 @@ void			ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2);
 void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst);
 t_point			*new_point(float x, float y, float z, unsigned int color);
 int				ft_steps(t_line *line, t_screen *fst, unsigned int col);
-t_line			*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst);
-void            ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw);
+t_line			*ft_newline(t_point *pa, t_point *pb, t_line *nw);
+void            ft_setpoint(t_point *pa, t_point *pb, t_line *nw);
 int				ft_steps_else(t_line *line);
 
 /*************  MAP.C  **************/

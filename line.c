@@ -6,13 +6,13 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 17:58:59 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 10:36:23 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
+void	ft_setpoint(t_point *pa, t_point *pb, t_line *nw)
 {
 	nw->x0 = fl_to_int(pa->x);
 	nw->x1 = fl_to_int(pb->x);
@@ -20,11 +20,11 @@ void	ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw)
 	nw->y1 = fl_to_int(pb->y);
 }
 
-t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst)
+t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw)
 {
 	if (!(nw = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
-	ft_setpoint(pa, pb, fst, nw);
+	ft_setpoint(pa, pb, nw);
 	nw->dx = nw->x1 - nw->x0;
 	nw->dy = nw->y1 - nw->y0;
 	if (nw->dy < 0)

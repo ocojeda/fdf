@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 14:23:55 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/26 16:54:22 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 10:37:36 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst)
 
 	if (ft_boundaries(pointa, pointb, fst->len, fst->hight))
 	{
-		line = ft_newline(pointb, pointa, NULL, fst);
+		line = ft_newline(pointb, pointa, NULL);
 		if (!ft_steps(line, fst, pointb->color))
 		{
 			while (line->y != line->y1)
