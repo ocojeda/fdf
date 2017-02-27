@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 09:22:22 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 10:19:44 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_point
 	struct s_point	*nextx;
 	struct s_point	*nexty;
 }					t_point;
+
 typedef struct		s_line
 {
 	int				x;
@@ -75,6 +76,11 @@ t_point			*test2(t_point *fp, void (*f)(t_point *point, int angle), int angle, t
 t_point			*test(t_point *fp, void (*f)(t_point *point));
 void			print_point(t_point *point);
 t_point			*addcenter(t_point *fp);
+
+/*********** KEYCODE.c **************/
+
+int				my_key_func(int keycode, t_screen *fst);
+
 /************* PARSE.C **************/
 
 t_point			*ft_get_map(char *str);
@@ -89,10 +95,11 @@ void			ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2);
 
 void			ft_put_diagonal(t_point *pointa, t_point *pointb, t_screen *fst);
 t_point			*new_point(float x, float y, float z, unsigned int color);
-int      ft_steps(t_line *line, t_screen *fst, unsigned int col);
-t_line   *ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst);
+int				ft_steps(t_line *line, t_screen *fst, unsigned int col);
+t_line			*ft_newline(t_point *pa, t_point *pb, t_line *nw, t_screen *fst);
 void            ft_setpoint(t_point *pa, t_point *pb, t_screen *fst, t_line *nw);
-int      ft_steps_else(t_line *line);
+int				ft_steps_else(t_line *line);
+
 /*************  MAP.C  **************/
 
 void			ft_center(t_point *fp, t_point *center, int lenght, int hight);
@@ -128,7 +135,7 @@ float			*ft_mapcpy(t_point *fp);
 /************ fl_to_int.c *************/
 
 int				fl_to_int(float fl);
-char			 **ft_iscolor(char *str);
+char			**ft_iscolor(char *str);
 
 /************ ft_error.c  ************/
 
