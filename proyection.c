@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:16:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 15:02:47 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 12:00:24 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		*ft_proyection(t_point *fp)
 	return (0);
 }
 
-void		ft_put_pix_map(t_point *fp, t_screen *fst, t_point *t, t_point *t2)
+void		ft_put_pix(t_point *fp, t_screen *fst, t_point *t, t_point *t2)
 {
 	t = fp;
 	while (t)

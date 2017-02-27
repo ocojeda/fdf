@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 11:35:33 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 16:47:15 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int			main(int argc, char **argv)
 	fst.cpy = ft_mapcpy(fst.fp);
 	fst.center = addcenter(fst.fp);
 	my_key_func(87, &fst);
-	ft_put_pix_map(fst.fp, &fst, NULL, NULL);
+	ft_put_pix(fst.fp, &fst, NULL, NULL);
 	fst.win = mlx_new_window(fst.mlx, fst.len, fst.hight, argv[1]);
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);

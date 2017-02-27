@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 10:04:50 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 11:47:46 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 11:58:21 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int				my_key_func(int keycode, t_screen *fst)
 	ft_putnbr(keycode);
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
-	ft_put_pix_map(fst->fp, fst, NULL, NULL);
+	ft_put_pix(fst->fp, fst, NULL, NULL);
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
