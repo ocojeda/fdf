@@ -6,14 +6,14 @@
 #    By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/17 18:15:56 by ocojeda-          #+#    #+#              #
-#    Updated: 2017/02/26 16:24:56 by tfaure           ###   ########.fr        #
+#    Updated: 2017/02/27 09:23:50 by myernaux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra  
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lm
-SRCS = bonus.c ft_atoi_hexa.c proyection.c map.c line.c parse.c matrix.c bonus1.c aux_fdf.c fl_to_int.c line2.c
+SRCS = bonus.c ft_atoi_hexa.c proyection.c map.c line.c parse.c matrix.c bonus1.c aux_fdf.c fl_to_int.c line2.c ft_error.c
 LIBRARIES = libft/libft.a fdf.a
 OBJECTS = $(SRCS:.c=.o)
 

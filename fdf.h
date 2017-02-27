@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 18:10:11 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 09:22:22 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,10 @@ float			*ft_mapcpy(t_point *fp);
 /************ fl_to_int.c *************/
 
 int				fl_to_int(float fl);
+char			 **ft_iscolor(char *str);
 
-char     **ft_iscolor(char *str);
+/************ ft_error.c  ************/
+
+void			ft_error(char *str);
+
 #endif

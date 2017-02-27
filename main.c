@@ -6,11 +6,12 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 18:52:52 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 09:54:08 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 void			ft_rotate(int keycode, t_screen *fst, t_point *temp)
 {
 	temp = new_point(fst->fp->x, fst->fp->y, 0, 0);
@@ -231,8 +232,8 @@ int				main(int argc, char **argv)
 {
 	t_screen	fst;
 	
-	if(argc == 2)
-	{
+	if (argc != 2)
+		ft_error("Need 2 arguments");
 	fst.fp = ft_get_map(argv[1]);
 	fst.len = 1500;
 	fst.hight = 1200;
@@ -249,6 +250,5 @@ int				main(int argc, char **argv)
 	mlx_loop(fst.mlx);
 	ft_erase_map(fst.fp, NULL, NULL);
 	free(fst.cpy);
-	}
 	return (0);
 }
