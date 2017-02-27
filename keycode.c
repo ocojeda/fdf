@@ -6,21 +6,37 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 10:04:50 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 10:40:21 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 11:47:46 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static void		keycode126(t_point *temp, t_point *fp, int k, t_screen *fst)
+{
+	int		i;
+
+	i = 70;
+	if (k == 126)
+	{
+		test2(fp, matrice_rotate_x, 5);
+		test3(fp, matrice_translate_rl, (temp->x - fp->x));
+		test3(fp, matrice_translate_ud, (temp->y - fp->y));
+	}
+	else
+	{
+		ft_resetmap(fst->fp, fst->cpy);
+		while (i--)
+			ft_set_zoom(fst->fp);
+		ft_center(fst->fp, fst->center, fst->len, fst->hight);
+	}
+}
+
 static void		ft_rotate(int keycode, t_screen *fst, t_point *temp)
 {
 	temp = new_point(fst->fp->x, fst->fp->y, 0, 0);
 	if (keycode == 126)
-	{
-		test2(fst->fp, matrice_rotate_x, 5);
-		test3(fst->fp, matrice_translate_rl, (temp->x - fst->fp->x));
-		test3(fst->fp, matrice_translate_ud, (temp->y - fst->fp->y));
-	}
+		keycode126(temp, fst->fp, 126, fst);
 	if (keycode == 125)
 	{
 		test2(fst->fp, matrice_rotate_x, -5);
@@ -70,12 +86,9 @@ static void		ft_translate(int keycode, t_screen *fst)
 
 static void		choose_action(int keycode, t_screen *fst)
 {
-	int i;
-
-	i = 70;
-	if(keycode > 100)
+	if (keycode > 100)
 		ft_rotate(keycode, fst, NULL);
-	if(keycode >= 6 && keycode < 86)
+	if (keycode >= 6 && keycode <= 86)
 		ft_translate(keycode, fst);
 	if (keycode == 91)
 		test3(fst->fp, matrice_translate_ud, -10);
@@ -92,15 +105,10 @@ static void		choose_action(int keycode, t_screen *fst)
 		test3(fst->fp, matrice_translate_rl, 10);
 	}
 	if (keycode == 87)
-	{
-		ft_resetmap(fst->fp, fst->cpy);
-		while(i--)
-			ft_set_zoom(fst->fp);
-		ft_center(fst->fp, fst->center, fst->len, fst->hight);
-	}
+		keycode126(NULL, fst->fp, 87, fst);
 }
 
-int			my_key_func(int keycode, t_screen *fst)
+int				my_key_func(int keycode, t_screen *fst)
 {
 	choose_action(keycode, fst);
 	ft_putnbr(keycode);
