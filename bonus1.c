@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:38:15 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 18:19:12 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/02 11:14:30 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,28 @@ void	ft_higher(t_point *fp)
 			if (temp2->z > 0)
 			{
 				temp2->z *= 1.1;
+			}
+			temp2 = temp2->nextx;
+		}
+		temp = temp->nexty;
+	}
+}
+
+void	ft_lower(t_point *fp)
+{
+	t_point		*temp;
+	t_point		*temp2;
+
+	temp = fp;
+	temp2 = fp;
+	while (temp)
+	{
+		temp2 = temp;
+		while (temp2)
+		{
+			if (temp2->z > 0)
+			{
+				temp2->z /= 1.1;
 			}
 			temp2 = temp2->nextx;
 		}

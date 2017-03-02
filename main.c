@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 16:47:15 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/02 12:25:06 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int			main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error("Need 2 arguments");
+	ft_file(argv[1]);
 	fst.fp = ft_get_map(argv[1]);
 	fst.len = 1500;
 	fst.hight = 1200;

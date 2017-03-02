@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 10:04:50 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 11:58:21 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/02 11:32:32 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static void		ft_translate(int keycode, t_screen *fst)
 	}
 	if (keycode == 6)
 		ft_higher(fst->fp);
+	if (keycode == 7)
+		ft_lower(fst->fp);
 }
 
 static void		choose_action(int keycode, t_screen *fst)
