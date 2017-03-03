@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:40:30 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/26 17:51:09 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/03 14:57:24 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ float		*ft_mapcpy(t_point *fp)
 
 	temp = fp;
 	x = count_map(fp);
-	z = (float *)malloc(sizeof(float) * (x + 1));
+	z = (float *)ft_memalloc(sizeof(float) * (x + 1));
 	z[x + 1] = '\0';
 	temp = fp;
 	x = 0;

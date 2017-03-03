@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 14:23:55 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/03 11:12:24 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/03 14:57:08 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_point			*new_point(float x, float y, float z, unsigned int color)
 {
 	t_point		*new;
 
-	if (!(new = (t_point *)malloc(sizeof(t_point))))
+	if (!(new = (t_point *)ft_memalloc(sizeof(t_point))))
 		return (NULL);
 	new->x = x;
 	new->y = y;

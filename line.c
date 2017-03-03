@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:58:06 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/03 10:23:09 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/03 14:49:52 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_setpoint(t_point *pa, t_point *pb, t_line *nw)
 
 t_line	*ft_newline(t_point *pa, t_point *pb, t_line *nw)
 {
-	if (!(nw = (t_line *)malloc(sizeof(t_line))))
+	if (!(nw = ft_memalloc(sizeof(t_line))))
 		return (NULL);
 	ft_setpoint(pa, pb, nw);
 	nw->dx = nw->x1 - nw->x0;
