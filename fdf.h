@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/02 12:25:02 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/03 11:24:36 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ char				**ft_iscolor(char *str);
 void				ft_error(char *str);
 void				ft_lower(t_point *fp);
 void				ft_file(char *str);
+void				ft_isvalid(char **str);
 
 #endif

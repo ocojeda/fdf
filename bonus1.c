@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:38:15 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/02 11:14:30 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/03 09:37:30 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 char	**ft_iscolor(char *str)
 {
 	if (ft_strchr(str, ','))
-	{
 		return (ft_strsplit(str, ','));
-	}
 	return (0);
 }
 

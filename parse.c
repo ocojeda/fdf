@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/26 17:59:19 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/03 14:13:00 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,12 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 	char		*line;
 	int			x;
 
-	while (get_next_line(fd, &line) && ++y >= -1)
+	while (get_next_line(fd, &line) == 1 && ++y >= -1)
 	{
 		x = 0;
-		linep = ft_strsplit(line, ' ');
+		if (!(linep = ft_strsplit(line, ' ')))
+			ft_error("Invalid File 1");
+		ft_isvalid(linep);
 		while (*linep)
 		{
 			x = ft_makepoint(linep, temp, x, y);
@@ -110,8 +112,8 @@ t_point			*ft_get_map(char *str)
 	t_point	*fp;
 	t_point	*temp;
 
-	if ((fd = (open(str, O_RDONLY))) == -1)
-		return (0);
+	if ((fd = open(str, O_RDONLY)) == -1)
+		ft_error("Invalid File 2");
 	temp = new_point(0, 0, 0, COLOR);
 	fp = get_map(fd, temp, -1, temp);
 	close(fd);
