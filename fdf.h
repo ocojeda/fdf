@@ -6,19 +6,18 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/03 11:24:36 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 09:53:45 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+# include <stdio.h>
 # include <mlx.h>
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
-# include <stdio.h>
-# include <math.h>
 # define COLOR 0x00FFFFFF
 # define ZOOM 5
 # define R_TRANSLATE 100
@@ -111,6 +110,5 @@ char				**ft_iscolor(char *str);
 void				ft_error(char *str);
 void				ft_lower(t_point *fp);
 void				ft_file(char *str);
-void				ft_isvalid(char **str);
 
 #endif

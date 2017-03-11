@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/03 14:13:00 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 09:53:49 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 		x = 0;
 		if (!(linep = ft_strsplit(line, ' ')))
 			ft_error("Invalid File 1");
-		ft_isvalid(linep);
 		while (*linep)
 		{
 			x = ft_makepoint(linep, temp, x, y);
