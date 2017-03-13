@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 10:04:50 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/02 11:32:32 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/13 09:55:42 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ static void		choose_action(int keycode, t_screen *fst)
 int				my_key_func(int keycode, t_screen *fst)
 {
 	choose_action(keycode, fst);
-	ft_putnbr(keycode);
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, fst->len, fst->hight);
 	ft_put_pix(fst->fp, fst, NULL, NULL);
