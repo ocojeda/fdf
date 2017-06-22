@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   fl_to_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 16:22:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/27 12:10:15 by myernaux         ###   ########.fr       */
+/*   Created: 2017/02/24 16:13:46 by tfaure            #+#    #+#             */
+/*   Updated: 2017/02/26 15:09:38 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/fdf.h"
 
-char		*ft_strnew(size_t size)
+int	fl_to_int(float fl)
 {
-	char	*str;
+	int new;
+	int tmp;
+	int tmp2;
 
-	str = (char*)malloc(size + 1);
-	if (str == NULL)
-		return (NULL);
-	ft_memset(str, (int)'\0', size + 1);
-	return (str);
+	tmp = fl;
+	tmp2 = fl - 0.5;
+	if (tmp == tmp2)
+		return ((new = fl) + 1);
+	else
+		return (new = fl);
 }

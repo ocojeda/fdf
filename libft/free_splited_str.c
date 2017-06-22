@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   free_splited_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 19:58:20 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/04/15 19:50:51 by bbeldame         ###   ########.fr       */
+/*   Created: 2017/04/17 13:44:18 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/05/01 21:16:40 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strrev(char *str)
+void		free_splited_str(char **str)
 {
-	int		j;
-	int		i;
-	char	swap;
+	int i;
 
-	if (!str)
-		return (NULL);
 	i = 0;
 	while (str[i])
-		i++;
-	i--;
-	j = 0;
-	while (i > j)
-	{
-		swap = str[j];
-		str[j] = str[i];
-		str[i] = swap;
-		i--;
-		j++;
-	}
-	return (str);
+		ft_memdel((void **)&str[i++]);
+	ft_memdel((void **)&str);
 }

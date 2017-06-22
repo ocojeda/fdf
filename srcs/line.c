@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	ft_setpoint(t_point *pa, t_point *pb, t_line *nw)
 {

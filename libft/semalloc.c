@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fl_to_int.c                                        :+:      :+:    :+:   */
+/*   semalloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:13:46 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/26 15:09:38 by tfaure           ###   ########.fr       */
+/*   Created: 2017/04/09 16:31:59 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/04/09 20:14:42 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int	fl_to_int(float fl)
+void		*semalloc(size_t size)
 {
-	int new;
-	int tmp;
-	int tmp2;
+	void *new;
 
-	tmp = fl;
-	tmp2 = fl - 0.5;
-	if (tmp == tmp2)
-		return ((new = fl) + 1);
-	else
-		return (new = fl);
+	if (!(new = malloc(size)))
+		err_found("malloc failed");
+	return (new);
 }

@@ -3,20 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 16:05:35 by tfaure            #+#    #+#             */
-/*   Updated: 2017/01/17 18:04:01 by ocojeda-         ###   ########.fr       */
+/*   Created: 2017/06/13 06:43:02 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/13 06:43:06 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "unistd.h"
-# include "stdlib.h"
-# include "string.h"
 
-# define BUFF_SIZE 10
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <string.h>
+# include <stdint.h>
+
+# define BUFF_SIZE 100000
+# define NBMAXFD 42
 
 typedef struct		s_list
 {
@@ -35,7 +39,7 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
+intmax_t			ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -86,8 +90,18 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 int					ft_min(int x, int y);
 int					ft_max(int x, int y);
-void				ft_strrev(char *s);
+char				*ft_strrev(char *str);
 char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
 int					get_next_line(const int fd, char **line);
+float				ft_map(float x, float length, float min, float max);
+void				*semalloc(size_t size);
+void				err_found(char *str);
+void				free_splited_str(char **str);
+int					len_of_tab(char **tab);
+double				ft_atof(const char *str);
+char				*ft_itoa_base(int value, int base);
+unsigned int		ft_atoi_base(char *nbr, int base);
+int					ft_pow(int x, int y);
+
 #endif

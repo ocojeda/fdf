@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int				ft_erase_map(t_point *temp, t_point *temp2, t_point *temp3)
 {
@@ -85,18 +85,22 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 	char		**linep;
 	char		*line;
 	int			x;
+	int			i;
 
-	while (get_next_line(fd, &line) == 1 && ++y >= -1)
+	i = 0;
+	while ((i  = get_next_line(fd, &line)) && ++y >= -1)
 	{
 		x = 0;
-		if (!(linep = ft_strsplit(line, ' ')))
-			ft_error("Invalid File");
+		if (!(linep = ft_strsplit(line, ' ')) || i == -1)
+			ft_error("Invalid File\n");
 		while (*linep)
 		{
 			x = ft_makepoint(linep, temp, x, y);
 			temp = temp->nextx;
 			free(*linep++);
 		}
+		ft_putnbr(x);
+		ft_putchar('/');
 		free(line);
 	}
 	temp = fp;
@@ -112,7 +116,7 @@ t_point			*ft_get_map(char *str)
 	t_point	*temp;
 
 	if ((fd = open(str, O_RDONLY)) == -1)
-		ft_error("Invalid File");
+		ft_error("Invalid File\n");
 	temp = new_point(0, 0, 0, COLOR);
 	fp = get_map(fd, temp, -1, temp);
 	close(fd);

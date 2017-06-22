@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 t_point		*test(t_point *fp, void (*f)(t_point *point))
 {
@@ -103,9 +103,8 @@ int			main(int argc, char **argv)
 {
 	t_screen	fst;
 
-	if (argc != 2)
-		ft_error("Need 2 arguments");
-	ft_file(argv[1]);
+	if(fdf_checker(&fst, argc, argv))
+		return(ft_errorcheck(fst.error));
 	fst.fp = ft_get_map(argv[1]);
 	fst.len = 1500;
 	fst.hight = 1200;

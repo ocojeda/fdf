@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 static void		keycode126(t_point *temp, t_point *fp, int k, t_screen *fst)
 {
