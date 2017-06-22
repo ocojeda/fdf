@@ -114,4 +114,5 @@ void				ft_lower(t_point *fp);
 void				ft_file(char *str);
 int					fdf_checker(t_screen *fst, int argc, char **argv);
 int					ft_errorcheck(int error);
+
 #endif
