@@ -54,7 +54,7 @@ typedef struct		s_line
 typedef struct		s_screen
 {
 	int				columns_total;
-	short			error;
+	int			error;
 	void			*mlx;
 	void			*win;
 	void			*img;
@@ -68,6 +68,20 @@ typedef struct		s_screen
 	t_point			*center;
 	float			*cpy;
 }					t_screen;
+
+typedef struct		s_fdf_checker
+{
+	int		    fd;
+	char		**linep;
+	char		*line;
+	int		     i;
+	int		    flag;
+	int		     e;
+	int		     l;
+	int          p;
+	int         flag2;
+	int			columns_total;
+}				t_check;	
 
 t_point				*test3(t_point *fp, void (*f)(t_point *p, int gle),
 						int gle);
@@ -109,10 +123,10 @@ void				ft_resetmap(t_point *fp, float *z0);
 float				*ft_mapcpy(t_point *fp);
 int					fl_to_int(float fl);
 char				**ft_iscolor(char *str);
-void				ft_error(char *str);
+void				ft_error(char *str, int fd);
 void				ft_lower(t_point *fp);
 void				ft_file(char *str);
-int					fdf_checker(t_screen *fst, int argc, char **argv);
+int					fdf_checker(t_screen *fst , int argc, char **argv);
 int					ft_errorcheck(int error);
 
 #endif

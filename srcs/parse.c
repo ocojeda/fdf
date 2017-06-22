@@ -92,7 +92,7 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 	{
 		x = 0;
 		if (!(linep = ft_strsplit(line, ' ')) || i == -1)
-			ft_error("Invalid File\n");
+			ft_error("Invalid File\n", 0);
 		while (*linep)
 		{
 			x = ft_makepoint(linep, temp, x, y);
@@ -116,7 +116,7 @@ t_point			*ft_get_map(char *str)
 	t_point	*temp;
 
 	if ((fd = open(str, O_RDONLY)) == -1)
-		ft_error("Invalid File\n");
+		ft_error("Unable to open the file\n", 0);
 	temp = new_point(0, 0, 0, COLOR);
 	fp = get_map(fd, temp, -1, temp);
 	close(fd);

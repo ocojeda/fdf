@@ -12,8 +12,10 @@
 
 #include "../includes/fdf.h"
 
-void	ft_error(char *str)
+void	ft_error(char *str, int fd)
 {
+	if(fd)
+		close(fd);
 	ft_putstr(str);
 	exit(EXIT_FAILURE);
 }
@@ -31,5 +33,5 @@ void	ft_file(char *str)
 		s1[i++] = str[len++];
 	s1[i] = '\0';
 	if (ft_strcmp(s1, ".fdf") != 0)
-		ft_error("Only .fdf file\n");
+		ft_error("Only .fdf file\n", 0);
 }
