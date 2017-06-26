@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 16:29:52 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 09:55:35 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/26 11:46:59 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static t_point	*get_map(int fd, t_point *temp, int y, t_point *fp)
 	int			i;
 
 	i = 0;
-	while ((i  = get_next_line(fd, &line)) && ++y >= -1)
+	while ((i = get_next_line(fd, &line)) && ++y >= -1)
 	{
 		x = 0;
 		if (!(linep = ft_strsplit(line, ' ')) || i == -1)

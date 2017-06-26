@@ -6,13 +6,13 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 14:32:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/20 10:17:16 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/26 12:08:04 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-unsigned int	ft_ischar(char c, int power, unsigned int i)
+unsigned int	ft_ischar(char c, int power, unsigned int i, int *e)
 {
 	if (ft_isalpha(c))
 	{
@@ -23,6 +23,7 @@ unsigned int	ft_ischar(char c, int power, unsigned int i)
 	}
 	else
 		i = i + (c - '0') * pow(16, power);
+	(*e)++;
 	return (i);
 }
 
@@ -37,17 +38,17 @@ unsigned int	ft_atoi_hexa(char *nbr)
 	i = 0;
 	if (!nbr)
 		return (0);
-	str = ft_strchr(nbr, 'x') + 1;
+	if (ft_strchr(nbr, 'x'))
+		str = ft_strchr(nbr, 'x') + 1;
+	else
+		str = nbr;
 	power = ft_strlen(str) - 1;
 	while (*str)
 	{
 		ft_strncpy(str2, str, 2);
 		e = 0;
 		while (str2[e])
-		{
-			i = ft_ischar(str2[e], power--, i);
-			e++;
-		}
+			i = ft_ischar(str2[e], power--, i, &e);
 		str += 2;
 	}
 	return (i);

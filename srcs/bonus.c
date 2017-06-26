@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 15:53:20 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/26 15:17:00 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/06/26 12:09:55 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ void	ft_zoom(t_point *fp)
 void	ft_set_zoom(t_point *fp)
 {
 	while (ft_maplength(fp) < 750 && ft_maphight(fp) < 600)
-	{
 		ft_zoom(fp);
-	}
+}
+
+int		ft_errorcheck(int error)
+{
+	if (error == 1)
+		ft_error("Need 2 arguments\n", 0);
+	return (0);
 }

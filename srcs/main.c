@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:10:26 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/03 14:12:58 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/26 11:46:25 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int			main(int argc, char **argv)
 {
 	t_screen	fst;
 
-	if(fdf_checker(&fst, argc, argv))
-		return(ft_errorcheck(fst.error));
+	if (fdf_checker(&fst, argc, argv))
+		return (ft_errorcheck(fst.error));
 	fst.fp = ft_get_map(argv[1]);
 	fst.len = 1500;
 	fst.hight = 1200;

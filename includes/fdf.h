@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 10:30:11 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/11 09:53:45 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/26 12:11:56 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct		s_line
 typedef struct		s_screen
 {
 	int				columns_total;
-	int			error;
+	int				error;
 	void			*mlx;
 	void			*win;
 	void			*img;
@@ -71,17 +71,14 @@ typedef struct		s_screen
 
 typedef struct		s_fdf_checker
 {
-	int		    fd;
-	char		**linep;
-	char		*line;
-	int		     i;
-	int		    flag;
-	int		     e;
-	int		     l;
-	int          p;
-	int         flag2;
-	int			columns_total;
-}				t_check;	
+	int				fd;
+	char			**linep;
+	char			*line;
+	int				i;
+	int				flag;
+	int				e;
+	int				columns_total;
+}					t_check;
 
 t_point				*test3(t_point *fp, void (*f)(t_point *p, int gle),
 						int gle);
@@ -126,7 +123,7 @@ char				**ft_iscolor(char *str);
 void				ft_error(char *str, int fd);
 void				ft_lower(t_point *fp);
 void				ft_file(char *str);
-int					fdf_checker(t_screen *fst , int argc, char **argv);
+int					fdf_checker(t_screen *fst, int argc, char **argv);
 int					ft_errorcheck(int error);
 
 #endif

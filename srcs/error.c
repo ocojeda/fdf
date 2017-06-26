@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 08:57:35 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 09:53:47 by myernaux         ###   ########.fr       */
+/*   Created: 2017/06/26 12:09:09 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/26 12:09:12 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(char *str, int fd)
 {
-	if(fd)
+	if (fd)
 		close(fd);
 	ft_putstr(str);
 	exit(EXIT_FAILURE);
